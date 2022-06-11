@@ -3,7 +3,7 @@ name: Cypress Tests
 on: [push]
 
 jobs:
-  Component tests:
+  Component-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code 🛎
@@ -15,7 +15,7 @@ jobs:
           working-directory: .
           component: true
 
-  E2E tests:
+  E2E-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code 🛎
