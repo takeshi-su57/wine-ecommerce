@@ -6,5 +6,3 @@ describe('Home page', () => {
       .contains('Hello World');
   });
 });
-
-export {};
