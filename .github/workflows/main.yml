@@ -1,18 +1,25 @@
-name: Cypress Tests - main.yml
+name: Cypress Tests 🧪
 
 on: [push]
 
 jobs:
-  cypress-run:
+  Component tests 🧪:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Check out code 🛎
         uses: actions/checkout@v2
 
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v4
         with:
-          command: npx cypress run --component
+          working-directory: .
+          component: true
+
+  E2E tests 🧪:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code 🛎
+        uses: actions/checkout@v2
 
       - name: Run E2E tests 🧪
         uses: cypress-io/github-action@v4
