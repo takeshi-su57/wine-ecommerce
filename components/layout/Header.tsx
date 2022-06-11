@@ -4,7 +4,7 @@ import { TitleHeader } from 'styles/layout/Header';
 const Header = () => {
   return (
     <Container.Header>
-      <TitleHeader data-cy="home_page_title">Hello World</TitleHeader>
+      <TitleHeader data-cy="header_logo">Wine</TitleHeader>
     </Container.Header>
   );
 };
