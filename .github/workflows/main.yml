@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Cypress Tests - main.yml
 
 on: [push]
 

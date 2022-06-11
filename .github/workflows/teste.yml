@@ -1,4 +1,4 @@
-name: Run Component tests 🧪
+name: Run Component tests 🧪 - teste.yml
 on: [push]
 jobs:
   cypress-run:

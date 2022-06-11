@@ -1,4 +1,4 @@
-name: Cypress Tests 🧪
+name: Cypress Tests 🧪 - all-tests.yml
 
 on: [push]
 
@@ -9,11 +9,15 @@ jobs:
       - name: Check out code 🛎
         uses: actions/checkout@v2
 
-      - name: Run E2E tests 🧪
-        uses: cypress-io/github-action@v4
-
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v4
         with:
           working-directory: .
           component: true
+
+      - name: Run E2E tests 🧪
+        uses: cypress-io/github-action@v4
+        with:
+          build: npm run build
+          start: npm start
+
