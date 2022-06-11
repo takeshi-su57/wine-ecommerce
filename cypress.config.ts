@@ -7,6 +7,14 @@ export default defineConfig({
     },
     screenshotOnRunFailure: false,
     video: false,
-    baseUrl: 'http://localhost:3000'
+    baseUrl: "http://localhost:3000",
+    projectId: "41jjfa",
+  },
+
+  component: {
+    devServer: {
+      framework: "next",
+      bundler: "webpack",
+    },
   },
 });
