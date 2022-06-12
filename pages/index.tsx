@@ -3,7 +3,7 @@ import Head from 'next/head';
 import BaseLayout from 'components/layout/Base';
 import Header from 'components/layout/Header';
 // Styles Components:
-import Container from 'styles/layout';
+import { Main } from 'styles/layout';
 
 const Home: NextPage = () => {
   return (
@@ -14,11 +14,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container.Main>
+      <Main>
         <Header />
-      </Container.Main>
+      </Main>
     </BaseLayout>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
