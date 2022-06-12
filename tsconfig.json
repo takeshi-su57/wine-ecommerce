@@ -19,7 +19,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "types": ["cypress", ]
+    "types": ["cypress"]
   },
   "include": [
     "next-env.d.ts",

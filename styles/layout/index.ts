@@ -1,9 +1,8 @@
 import Main from './Main';
-import Header from './Header';
+import { HeaderContent, HeaderContainer } from './Header';
 
-const Container = {
+export {
   Main,
-  Header,
-}
-
-export default Container;
+  HeaderContent,
+  HeaderContainer
+};
