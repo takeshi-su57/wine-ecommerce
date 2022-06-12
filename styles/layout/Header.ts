@@ -9,7 +9,15 @@ const HeaderContent = styled.header`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 1280px;
+  max-width: 1280px;
+
+  @media(max-width: 1280px) {
+    padding: 0 10px;
+  }
+`;
+
+const Logo = styled.div`
+  display: flex;
 `;
 
 const Navbar = styled.nav`
@@ -42,13 +50,17 @@ const Navbar = styled.nav`
       }
     }
   }
+
+  @media(max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const BtnsHeader = styled.div`
-  width: 30%;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: flex-end;
+  width: 30%;
   
   button {
     height: 100%;
@@ -93,6 +105,29 @@ const BtnsHeader = styled.div`
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
   }
+
+  @media(max-width: 1000px) {
+    width: auto;
+  }
+
+  button:nth-child(2)  {
+    @media(max-width:400px) {
+      display: none;
+    }
+  }
 `;
 
-export { HeaderContent, HeaderContainer, Navbar, BtnsHeader };
+const BtnMenu = styled.button`
+  display: none;
+
+  @media(max-width: 1000px) {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+`;
+
+export { HeaderContent, HeaderContainer, Logo, Navbar, BtnsHeader, BtnMenu };

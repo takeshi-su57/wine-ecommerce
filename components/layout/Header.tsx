@@ -1,17 +1,22 @@
 import { HeaderContainer } from 'styles/layout';
-import { HeaderContent, Navbar, BtnsHeader } from 'styles/layout/Header';
+import { HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/layout/Header';
 import Image from 'next/image';
+import MenuMobileBtn from 'components/BtnMenuMobile';
 
 const Header = () => {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <Image
-          src="/images/wine_logo.svg"
-          alt="Landscape picture"
-          width={ 100 }
-          height={ 80 }
-        />
+        <Logo>
+          <MenuMobileBtn />
+          <Image
+            src="/images/wine_logo.svg"
+            alt="Landscape picture"
+            width={ 100 }
+            height={ 80 }
+          />
+        </Logo>
+
         <Navbar>
           <ul>
             <li><a href="">Clube</a></li>
