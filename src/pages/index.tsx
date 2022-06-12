@@ -3,7 +3,7 @@ import Head from 'next/head';
 import BaseLayout from 'components/layout/Base';
 import Header from 'components/layout/Header';
 // Styles Components:
-import { Main } from 'styles/layout';
+import { Main } from 'styles';
 
 const Home: NextPage = () => {
   return (

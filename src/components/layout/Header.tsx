@@ -1,5 +1,5 @@
-import { HeaderContainer } from 'styles/layout';
-import { HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/layout/Header';
+import { HeaderContainer } from 'styles';
+import { HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/Header';
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
 
