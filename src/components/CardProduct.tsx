@@ -1,4 +1,5 @@
-import { ProductCard } from "contexts/types";
+import Router from 'next/router';
+import { ProductCard } from 'contexts/types';
 import {
   BtnAddProductCart,
   Card,
@@ -8,13 +9,20 @@ import {
   ProductName,
   ProductPriceNoSocial,
   ProductPriceSocial,
-} from "styles/pages/store/CardProduct";
+} from 'styles/pages/store/CardProduct';
 import Image from 'next/image';
+import { useContext } from 'react';
+import { AppContext } from 'contexts/AppProvider';
 
-const CardProduct = ({ name, image }: ProductCard) => {
+const CardProduct = ({ name, image, id }: ProductCard) => {
+  const { defineFocusProduct } = useContext(AppContext);
+
   return (
     <CardContainer>
-      <Card>
+      <Card onClick={ () => {
+        defineFocusProduct(id);
+        Router.push(`/product/${id}`);
+      }}>
         <ProductImage>
           <Image
             src={ image }

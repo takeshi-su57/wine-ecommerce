@@ -48,6 +48,7 @@ const FilterForm = styled.form`
     }
 
     input {
+      opacity: 0;
       cursor: pointer;
       margin-right: 20px;
 

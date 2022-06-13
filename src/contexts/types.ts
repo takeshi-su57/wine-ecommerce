@@ -8,7 +8,7 @@ export interface Product {
   priceNonMember: number;
   type: string;
   classification: string;
-  size: string;
+  volume: string;
   rating: number;
   avaliations: number;
   country: string;
@@ -29,16 +29,20 @@ export interface ProductCard {
 
 export const DEFAULT_VALUE = {
   products: [],
+  productFocus: undefined,
   details: {
     page: 0,
     itemsPerPage: 0,
     totalItems: 0,
     totalPages: 0,
-  }
+  },
+  defineFocusProduct: () => {},
 };
 
 export type AppContextType = {
   products: Product[];
+  productFocus: Product | undefined;
+  defineFocusProduct: Function;
   details: {
     page: number;
     itemsPerPage: number;

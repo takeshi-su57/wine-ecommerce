@@ -1,6 +1,7 @@
 import { HeaderContainer, HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/Header';
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
+import Router from 'next/router';
 
 const Header = () => {
   return (
@@ -13,6 +14,8 @@ const Header = () => {
             alt="Landscape picture"
             width={ 100 }
             height={ 80 }
+            onClick={ () => Router.push('/') }
+            style={ { cursor: 'pointer' } }
           />
         </Logo>
 

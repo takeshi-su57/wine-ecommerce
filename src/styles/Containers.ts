@@ -39,5 +39,9 @@ const ProductsFlex = styled.section`
   }
 `;
 
+const SectionFlexProduct = styled.section`
+  display: flex;
+  margin-top: 20px;
+`;
 
-export { Main, SectionCenter, SectionProducts, ProductsFlex };
+export { Main, SectionCenter, SectionProducts, ProductsFlex, SectionFlexProduct };
