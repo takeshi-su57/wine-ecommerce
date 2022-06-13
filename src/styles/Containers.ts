@@ -43,6 +43,11 @@ const ProductsFlex = styled.section`
 const SectionFlexProduct = styled.section`
   display: flex;
   margin-top: 20px;
+  position: relative;
+
+  @media(max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 const SectionLoading = styled.section`

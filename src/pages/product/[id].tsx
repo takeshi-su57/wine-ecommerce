@@ -4,8 +4,13 @@ import { Main, SectionCenter } from 'styles/Containers';
 import ProductInformation from 'components/ProductInformation';
 import { BtnGoBack } from 'styles/pages/product/Informations';
 import Router from 'next/router';
+import Cart from 'components/Cart';
+import { useContext } from 'react';
+import { AppContext } from 'contexts/AppProvider';
 
 const Product: NextPage = () => {
+  const { viewCart } = useContext(AppContext);
+
   return (
     <Main>
       <Header />
@@ -15,7 +20,10 @@ const Product: NextPage = () => {
            Voltar
         </BtnGoBack>
         <ProductInformation />
+
       </SectionCenter>
+      
+      { viewCart ? <Cart /> : '' }
     </Main>
   );
 };
