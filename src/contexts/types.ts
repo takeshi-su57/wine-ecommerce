@@ -37,8 +37,10 @@ export const DEFAULT_VALUE = {
     totalPages: 0,
   },
   cartCount: 0,
+  loading: true,
   defineFocusProduct: () => {},
   saveInCart: () => {},
+  loadMore: () => {},
 };
 
 export type AppContextType = {
@@ -47,6 +49,8 @@ export type AppContextType = {
   defineFocusProduct: Function;
   saveInCart: Function;
   cartCount: number;
+  loadMore: Function;
+  loading: boolean;
   details: {
     page: number;
     itemsPerPage: number;

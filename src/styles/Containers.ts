@@ -33,6 +33,7 @@ const ProductsFlex = styled.section`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 
   &:last-child {
     margin-bottom: 100px;

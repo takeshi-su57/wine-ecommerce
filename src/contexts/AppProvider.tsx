@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProductsInit } from 'services/apiWine';
+import { getProductsInit, loadMoreProducts } from 'services/apiWine';
 import { AppContextType, DEFAULT_VALUE, Product, propsProvider } from './types';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
@@ -9,11 +9,14 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [details, setDetails] = useState(DEFAULT_VALUE.details);
   const [productFocus, setProdFocus] = useState(DEFAULT_VALUE.productFocus);
   const [cartCount, setCartCount] = useState(0);
+  const [limit, setLimit] = useState(12);
+  const [loading, setLoading] = useState(true);
 
   const getInitInfo = async () => {
     const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
     setProducts(items);
     setDetails({ page, totalPages, itemsPerPage, totalItems });
+    setLoading(false);
   };
 
   const defineFocusProduct = (index: number) => {
@@ -47,6 +50,14 @@ export const AppProvider = ({ children }: propsProvider) => {
     };
   }
 
+  const loadMore = async () => {
+    setLoading(true);
+    setLimit(limit + 12);
+    const data = await loadMoreProducts(limit + 12);
+    setProducts(data.items);
+    setLoading(false);
+  }
+
   useEffect(() => {
     getInitInfo();
 
@@ -66,7 +77,9 @@ export const AppProvider = ({ children }: propsProvider) => {
       productFocus,
       cartCount,
       defineFocusProduct,
-      saveInCart
+      saveInCart,
+      loadMore,
+      loading
     }}>
       { children }
     </AppContext.Provider>

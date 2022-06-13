@@ -8,3 +8,10 @@ export const getProductsInit = async () => {
   const { data } = await api.get(`/products?page=1&limit=12`);
   return data;
 };
+
+export const loadMoreProducts = async (limit: number) => {
+  console.log(`/products?page=1&limit=${ limit }`);
+  
+  const { data } = await api.get(`/products?page=1&limit=${ limit }`);
+  return data;
+};

@@ -3,11 +3,13 @@ import Header from 'components/layout/Header';
 import { Main, ProductsFlex, SectionCenter, SectionProducts } from 'styles/Containers';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from 'contexts/AppProvider';
+import LoadMore from 'styles/pages/store/LoadMoreBtn';
+import Loading from 'components/Loading';
 
 const Home: NextPage = () => {
-  const { details, products } = useContext(AppContext);
+  const { details, products, loadMore, loading } = useContext(AppContext);
 
   return (
     <Main>
@@ -34,6 +36,11 @@ const Home: NextPage = () => {
               ))
             }
           </ProductsFlex>
+          <div>
+            <LoadMore onClick={ () => loadMore() } disabled={ products.length === details.totalItems }>
+              { loading ? <Loading /> : <h3>Mostrar mais</h3> }
+            </LoadMore>
+          </div>
         </SectionProducts>
       </SectionCenter>
     </Main>
