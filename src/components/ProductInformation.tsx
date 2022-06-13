@@ -63,12 +63,20 @@ const ProductInformation = () => {
           <StarsAvaliations avaliation={ productFocus.rating } />
           <span>({ productFocus.avaliations || 0 })</span>
         </ProductDetail>
-        <ProductPrice>{ `R$ ${ productFocus.priceMember.toFixed(2) }` }</ProductPrice>
-        <h3>{ `NÃO SÓCIO R$ ${ productFocus.priceNonMember.toFixed(2) }/un.` }</h3>
+        <ProductPrice>
+          { `R$ ${ productFocus.priceMember
+            .toFixed(2).replace(/\./, ',') }` }
+        </ProductPrice>
+        <h3>
+          { `NÃO SÓCIO R$ ${ productFocus.priceNonMember
+              .toFixed(2).replace(/\./, ',') }/un.` }
+        </h3>
 
         <h4>Comentário do Sommelier</h4>
 
-        <ProductComment>{ productFocus.sommelierComment }</ProductComment>
+        <ProductComment>
+          { productFocus.sommelierComment }
+        </ProductComment>
         <BtnContainer>
           <div>
             <button

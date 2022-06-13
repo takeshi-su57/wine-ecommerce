@@ -3,13 +3,14 @@ import Header from 'components/layout/Header';
 import { Main, ProductsFlex, SectionCenter, SectionLoading, SectionProducts } from 'styles/Containers';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 import LoadMore from 'styles/pages/store/LoadMoreBtn';
 import Loading from 'components/Loading';
+import Cart from 'components/Cart';
 
 const Home: NextPage = () => {
-  const { details, products, loadMore, loading } = useContext(AppContext);
+  const { details, products, loadMore, loading, viewCart } = useContext(AppContext);
 
   if (products.length === 0) {
     return (
@@ -56,6 +57,8 @@ const Home: NextPage = () => {
           </div>
         </SectionProducts>
       </SectionCenter>
+
+      { viewCart ? <Cart /> : '' }
     </Main>
   );
 };

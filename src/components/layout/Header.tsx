@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 
 const Header = () => {
-  const { cartCount } = useContext(AppContext);
+  const { cartCount, setViewCart } = useContext(AppContext);
 
   return (
     <HeaderContainer>
@@ -25,11 +25,11 @@ const Header = () => {
 
         <Navbar>
           <ul>
-            <li><a href="">Clube</a></li>
-            <li><a href="">Loja</a></li>
-            <li><a href="">Produtores</a></li>
-            <li><a href="">Ofertas</a></li>
-            <li><a href="">Eventos</a></li>
+            <li><a href="#">Clube</a></li>
+            <li><a href="#">Loja</a></li>
+            <li><a href="#">Produtores</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Eventos</a></li>
           </ul>
         </Navbar>
 
@@ -50,7 +50,7 @@ const Header = () => {
               height={ 50 }
             />
           </button>
-          <button>
+          <button onClick={ () => setViewCart(true) }>
             <div>
               <Image
                 src="/images/cart_icon.png"

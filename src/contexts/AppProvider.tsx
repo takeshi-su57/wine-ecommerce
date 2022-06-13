@@ -11,6 +11,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [cartCount, setCartCount] = useState(0);
   const [limit, setLimit] = useState(12);
   const [loading, setLoading] = useState(true);
+  const [viewCart, setViewCart] = useState(false);
 
   const getInitInfo = async () => {
     const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
@@ -79,7 +80,9 @@ export const AppProvider = ({ children }: propsProvider) => {
       defineFocusProduct,
       saveInCart,
       loadMore,
-      loading
+      loading,
+      viewCart,
+      setViewCart
     }}>
       { children }
     </AppContext.Provider>

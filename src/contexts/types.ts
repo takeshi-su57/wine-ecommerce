@@ -27,6 +27,15 @@ export interface ProductCard {
   priceNonMember: number;
 }
 
+export interface ProductCart {
+  id: number;
+  name: string;
+  image: string;
+  priceMember: number;
+  priceNonMember: number;
+  quantity: number;
+}
+
 export const DEFAULT_VALUE = {
   products: [],
   productFocus: undefined,
@@ -38,9 +47,11 @@ export const DEFAULT_VALUE = {
   },
   cartCount: 0,
   loading: true,
+  viewCart: false,
   defineFocusProduct: () => {},
   saveInCart: () => {},
   loadMore: () => {},
+  setViewCart: () => {},
 };
 
 export type AppContextType = {
@@ -51,6 +62,8 @@ export type AppContextType = {
   cartCount: number;
   loadMore: Function;
   loading: boolean;
+  viewCart: boolean;
+  setViewCart: Function;
   details: {
     page: number;
     itemsPerPage: number;
