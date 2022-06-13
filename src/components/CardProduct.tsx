@@ -1,3 +1,4 @@
+import { ProductCard } from "contexts/types";
 import {
   BtnAddProductCart,
   Card,
@@ -8,16 +9,21 @@ import {
   ProductPriceNoSocial,
   ProductPriceSocial,
 } from "styles/pages/store/CardProduct";
+import Image from 'next/image';
 
-const CardProduct = () => {
+const CardProduct = ({ name, image }: ProductCard) => {
   return (
     <CardContainer>
       <Card>
         <ProductImage>
-          Imagem Produto
+          <Image
+            src={ image }
+            alt="Landscape picture"
+            width="100%" height="100%" layout="responsive" objectFit="contain"
+          />
         </ProductImage>
         <ProductName>
-          Bacalhôa Meia Pipa Private Selection Castelão Syrah 2014
+          { name }
         </ProductName>
         <ProductDiscount>
           <del>R$ 37,40</del> <span>60% OFF</span>

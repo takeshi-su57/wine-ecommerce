@@ -8,7 +8,6 @@ const SectionCenter = styled.section`
   max-width: 1280px;
   margin: 0 auto;
   margin-top: 40px;
-  margin-bottom: 40px;
 
   @media(max-width: 1300px) {
     padding: 0 20px;
@@ -34,6 +33,10 @@ const ProductsFlex = styled.section`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  &:last-child {
+    margin-bottom: 100px;
+  }
 `;
 
 

@@ -5,6 +5,6 @@ const api = axios.create({
 });
 
 export const getProductsInit = async () => {
-  const { data } = await api.get(`/products?page=1&limit=10`);
+  const { data } = await api.get(`/products?page=1&limit=12`);
   return data;
 };

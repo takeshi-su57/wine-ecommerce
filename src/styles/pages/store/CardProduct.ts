@@ -11,15 +11,18 @@ const CardContainer = styled.div`
 `;
 
 const Card = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: white;
   box-shadow: 0px 9px 14px rgba(0, 0, 0, 0.1);
-  min-height: 330px;
+  height: 360px;
   padding: 10px;
 `;
 
 const ProductImage = styled.div`
-  background-color: #eee;
-  height: 180px;
+  min-height: 220px;
   width: 220px;
   margin: 0 auto;
 
