@@ -1,4 +1,4 @@
-import { AppProvider } from 'context/AppProvider';
+import { AppProvider } from 'contexts/AppProvider';
 import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
