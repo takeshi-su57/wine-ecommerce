@@ -8,6 +8,10 @@ const SectionFilter = styled.section`
     margin-top: 40px;
     margin-bottom: 20px;
   }
+
+  @media(max-width: 1150px) {
+    display: none;
+  }
 `;
 
 const FilterForm = styled.form`

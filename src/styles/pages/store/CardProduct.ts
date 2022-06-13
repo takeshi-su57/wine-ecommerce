@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-  background-color: #eee;
-  width: 270px;
-  height: 330px;
   text-align: center;
+  margin-top: 20px;
+  width: 260px;
+
+  @media(max-width: 570px) {
+    width: 200px;
+  }
 `;
 
 const Card = styled.div`
   background-color: white;
   box-shadow: 0px 9px 14px rgba(0, 0, 0, 0.1);
-  min-height: 280px;
+  min-height: 330px;
   padding: 10px;
 `;
 
@@ -19,6 +22,10 @@ const ProductImage = styled.div`
   height: 180px;
   width: 220px;
   margin: 0 auto;
+
+  @media(max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 const ProductName = styled.h4`
@@ -67,6 +74,7 @@ const BtnAddProductCart = styled.button`
   background-color: #7EBC43;
   border: none;
   color: white;
+  cursor: pointer;
   border-radius: 3px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   font-weight: bold;
