@@ -11,10 +11,15 @@ const SectionCenter = styled.section`
 `;
 
 const SectionProducts = styled.section`
-  background-color: greenyellow;
   float: right;
   width: 75%;
 `;
 
+const ProductsFlex = styled.section`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+`;
 
-export { Main, SectionCenter, SectionProducts };
+
+export { Main, SectionCenter, SectionProducts, ProductsFlex };

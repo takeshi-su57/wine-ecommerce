@@ -1,0 +1,88 @@
+import styled from 'styled-components';
+
+const CardContainer = styled.div`
+  background-color: #eee;
+  width: 270px;
+  height: 330px;
+  text-align: center;
+`;
+
+const Card = styled.div`
+  background-color: white;
+  box-shadow: 0px 9px 14px rgba(0, 0, 0, 0.1);
+  min-height: 280px;
+  padding: 10px;
+`;
+
+const ProductImage = styled.div`
+  background-color: #eee;
+  height: 180px;
+  width: 220px;
+  margin: 0 auto;
+`;
+
+const ProductName = styled.h4`
+  margin: 10px 0;
+`;
+
+const ProductDiscount = styled.p`
+  font-size: 12px;
+  margin-bottom: 10px;
+
+  del {
+    color: #888888;
+  }
+
+  span {
+    color: white;
+    background-color: #F79552;
+    border-radius: 2px;
+    padding: 0 5px;
+  }
+`;
+
+const ProductPriceSocial = styled.p`
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  span {
+    color: #b6116e;
+
+    span {
+      font-size: 20px;
+    }
+  }
+`;
+
+const ProductPriceNoSocial = styled.p`
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #888888;
+`;
+
+const BtnAddProductCart = styled.button`
+  background-color: #7EBC43;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  margin-top: 16px;
+  padding: 10px;
+  text-transform: uppercase;
+  width: 100%;
+`;
+
+export {
+  CardContainer,
+  Card,
+  ProductImage,
+  ProductName,
+  ProductDiscount,
+  ProductPriceSocial,
+  ProductPriceNoSocial,
+  BtnAddProductCart
+};

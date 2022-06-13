@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Neo Sans';
+    background-color: #F5F5F5;
     margin: 0;
     padding: 0;
   }

@@ -27,7 +27,7 @@ const FilterForm = styled.form`
       left: 0;
       height: 25px;
       width: 25px;
-      background-color: #eee;
+      background-color: #dfdfdf;
       border-radius: 50%;
 
       &:after {
