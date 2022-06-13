@@ -14,7 +14,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 
-const CardProduct = ({ name, image, id, priceMember, priceNonMember }: ProductCard) => {
+const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, discount }: ProductCard) => {
   const { defineFocusProduct, saveInCart } = useContext(AppContext);
 
   return (
@@ -34,13 +34,14 @@ const CardProduct = ({ name, image, id, priceMember, priceNonMember }: ProductCa
           { name }
         </ProductName>
         <ProductDiscount>
-          <del>R$ 37,40</del> <span>60% OFF</span>
+          <del>{ `R$ ${ price.toFixed(2).replace(/\./, ',') }` }</del>
+          <span>{ discount }% OFF</span>
         </ProductDiscount>
         <ProductPriceSocial>
-          Sócio wine <span>R$ <span>30</span>,00</span>
+          Sócio wine <span>R$ <span>{ priceMember.toFixed(2).replace(/\./, ',') }</span></span>
         </ProductPriceSocial>
         <ProductPriceNoSocial>
-          Não sócio R$ 37,40
+          Não sócio R$ { priceNonMember.toFixed(2).replace(/\./, ',') }
         </ProductPriceNoSocial>
       </Card>
       <BtnAddProductCart onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, 1) }>

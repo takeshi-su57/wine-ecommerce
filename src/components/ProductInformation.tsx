@@ -15,23 +15,26 @@ import {
 } from 'styles/pages/product/Informations';
 
 const ProductInformation = () => {
-  const { productFocus } = useContext(AppContext);
+  const { productFocus, saveInCart } = useContext(AppContext);
   const [count, setCount] = useState(1);
 
+  
   const increment = () => {
     setCount(count + 1);
   };
-
+  
   const decrement = () => {
     setCount(count - 1);
   };
-
+  
   if (!productFocus) {
     return (
       <h1>Deu erro!</h1>
     );
   };
-
+  
+  const { name, image, id, priceMember, priceNonMember  } = productFocus;
+    
   return (
     <SectionFlexProduct>
       <ImageContainer>
@@ -77,7 +80,9 @@ const ProductInformation = () => {
             <span>{ count }</span>
             <button onClick={ increment }>+</button>
           </div>
-          <button>Adicionar</button>
+          <button onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, count) }>
+            Adicionar
+          </button>
         </BtnContainer>
       </InfoContainer>
     </SectionFlexProduct>

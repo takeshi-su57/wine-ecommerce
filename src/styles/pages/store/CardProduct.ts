@@ -48,6 +48,7 @@ const ProductDiscount = styled.p`
     background-color: #F79552;
     border-radius: 2px;
     padding: 0 5px;
+    margin-left: 5px;
   }
 `;
 
