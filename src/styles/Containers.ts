@@ -45,4 +45,18 @@ const SectionFlexProduct = styled.section`
   margin-top: 20px;
 `;
 
-export { Main, SectionCenter, SectionProducts, ProductsFlex, SectionFlexProduct };
+const SectionLoading = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+`;
+
+export {
+  Main,
+  SectionCenter,
+  SectionProducts,
+  ProductsFlex,
+  SectionFlexProduct,
+  SectionLoading
+};

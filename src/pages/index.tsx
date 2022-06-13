@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Header from 'components/layout/Header';
-import { Main, ProductsFlex, SectionCenter, SectionProducts } from 'styles/Containers';
+import { Main, ProductsFlex, SectionCenter, SectionLoading, SectionProducts } from 'styles/Containers';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
 import { useContext, useState } from 'react';
@@ -10,6 +10,19 @@ import Loading from 'components/Loading';
 
 const Home: NextPage = () => {
   const { details, products, loadMore, loading } = useContext(AppContext);
+
+  if (products.length === 0) {
+    return (
+      <Main>
+      <Header />
+      <SectionCenter>
+        <SectionLoading>
+          <Loading />
+        </SectionLoading>
+      </SectionCenter>
+    </Main>
+    )
+  }
 
   return (
     <Main>
