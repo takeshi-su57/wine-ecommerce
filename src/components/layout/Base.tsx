@@ -20,6 +20,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  * {
+    margin: 0;
+  }
 `;
 
 const BaseLayout = ({ children }: { children: any }) => {

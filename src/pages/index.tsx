@@ -3,7 +3,8 @@ import Head from 'next/head';
 import BaseLayout from 'components/layout/Base';
 import Header from 'components/layout/Header';
 // Styles Components:
-import { Main } from 'styles';
+import { Main, SectionCenter, SectionProducts } from 'styles/Containers';
+import Filter from 'components/Filter';
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,12 @@ const Home: NextPage = () => {
 
       <Main>
         <Header />
+        <SectionCenter>
+          <Filter />
+          <SectionProducts>
+            Produtos
+          </SectionProducts>
+        </SectionCenter>
       </Main>
     </BaseLayout>
   );
