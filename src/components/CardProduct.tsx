@@ -14,8 +14,8 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 
-const CardProduct = ({ name, image, id }: ProductCard) => {
-  const { defineFocusProduct } = useContext(AppContext);
+const CardProduct = ({ name, image, id, priceMember, priceNonMember }: ProductCard) => {
+  const { defineFocusProduct, saveInCart } = useContext(AppContext);
 
   return (
     <CardContainer>
@@ -43,7 +43,7 @@ const CardProduct = ({ name, image, id }: ProductCard) => {
           Não sócio R$ 37,40
         </ProductPriceNoSocial>
       </Card>
-      <BtnAddProductCart>
+      <BtnAddProductCart onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, 1) }>
         Adicionar
       </BtnAddProductCart>
     </CardContainer>

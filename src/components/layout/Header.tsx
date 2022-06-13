@@ -2,8 +2,12 @@ import { HeaderContainer, HeaderContent, Navbar, BtnsHeader, Logo } from 'styles
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
 import Router from 'next/router';
+import { useContext } from 'react';
+import { AppContext } from 'contexts/AppProvider';
 
 const Header = () => {
+  const { cartCount } = useContext(AppContext);
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -56,7 +60,7 @@ const Header = () => {
               />
             </div>
             <div>
-              0
+              { cartCount }
             </div>
           </button>
         </BtnsHeader>

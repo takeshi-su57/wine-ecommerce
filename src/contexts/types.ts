@@ -36,13 +36,17 @@ export const DEFAULT_VALUE = {
     totalItems: 0,
     totalPages: 0,
   },
+  cartCount: 0,
   defineFocusProduct: () => {},
+  saveInCart: () => {},
 };
 
 export type AppContextType = {
   products: Product[];
   productFocus: Product | undefined;
   defineFocusProduct: Function;
+  saveInCart: Function;
+  cartCount: number;
   details: {
     page: number;
     itemsPerPage: number;
