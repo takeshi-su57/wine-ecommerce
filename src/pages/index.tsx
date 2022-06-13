@@ -1,23 +1,65 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import BaseLayout from 'components/layout/Base';
 import Header from 'components/layout/Header';
-// Styles Components:
-import { Main } from 'styles';
+import { Main, ProductsFlex, SectionCenter, SectionLoading, SectionProducts } from 'styles/Containers';
+import Filter from 'components/Filter';
+import CardProduct from 'components/CardProduct';
+import { useContext } from 'react';
+import { AppContext } from 'contexts/AppProvider';
+import LoadMore from 'styles/pages/store/LoadMoreBtn';
+import Loading from 'components/Loading';
+import Cart from 'components/Cart';
 
 const Home: NextPage = () => {
-  return (
-    <BaseLayout>
-      <Head>
-        <title>Wine E-commerce</title>
-        <meta name="description" content="Application e-commerce" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  const { details, products, loadMore, loading, viewCart } = useContext(AppContext);
 
+  if (products.length === 0) {
+    return (
       <Main>
-        <Header />
-      </Main>
-    </BaseLayout>
+      <Header />
+      <SectionCenter>
+        <SectionLoading>
+          <Loading />
+        </SectionLoading>
+      </SectionCenter>
+    </Main>
+    )
+  }
+
+  return (
+    <Main>
+      <Header />
+      <SectionCenter>
+        <Filter />
+        <SectionProducts>
+          <p>
+            <strong>{details.totalItems}</strong> produtos encontrados
+          </p>
+          <ProductsFlex>
+            {
+              products.map((product, index) => (
+                <CardProduct
+                  key={index}
+                  name={product.name}
+                  id={product.id}
+                  image={product.image}
+                  discount={product.discount}
+                  price={product.price}
+                  priceMember={product.priceMember}
+                  priceNonMember={product.priceNonMember}
+                />
+              ))
+            }
+          </ProductsFlex>
+          <div>
+            <LoadMore onClick={ () => loadMore() } disabled={ products.length === details.totalItems }>
+              { loading ? <Loading /> : <h3>Mostrar mais</h3> }
+            </LoadMore>
+          </div>
+        </SectionProducts>
+      </SectionCenter>
+
+      { viewCart ? <Cart /> : '' }
+    </Main>
   );
 };
 

@@ -1,9 +1,13 @@
-import { HeaderContainer } from 'styles';
-import { HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/Header';
+import { HeaderContainer, HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/Header';
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
+import Router from 'next/router';
+import { useContext } from 'react';
+import { AppContext } from 'contexts/AppProvider';
 
 const Header = () => {
+  const { cartCount, setViewCart } = useContext(AppContext);
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -14,16 +18,18 @@ const Header = () => {
             alt="Landscape picture"
             width={ 100 }
             height={ 80 }
+            onClick={ () => Router.push('/') }
+            style={ { cursor: 'pointer' } }
           />
         </Logo>
 
         <Navbar>
           <ul>
-            <li><a href="">Clube</a></li>
-            <li><a href="">Loja</a></li>
-            <li><a href="">Produtores</a></li>
-            <li><a href="">Ofertas</a></li>
-            <li><a href="">Eventos</a></li>
+            <li><a href="#">Clube</a></li>
+            <li><a href="#">Loja</a></li>
+            <li><a href="#">Produtores</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Eventos</a></li>
           </ul>
         </Navbar>
 
@@ -44,7 +50,7 @@ const Header = () => {
               height={ 50 }
             />
           </button>
-          <button>
+          <button onClick={ () => setViewCart(true) }>
             <div>
               <Image
                 src="/images/cart_icon.png"
@@ -54,7 +60,7 @@ const Header = () => {
               />
             </div>
             <div>
-              0
+              { cartCount }
             </div>
           </button>
         </BtnsHeader>
