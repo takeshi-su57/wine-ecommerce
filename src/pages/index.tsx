@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       <Header />
       <SectionCenter>
         <Filter />

@@ -70,6 +70,16 @@ export const AppProvider = ({ children }: propsProvider) => {
       setCartCount(JSON.parse(cartData).length);
     };
   }, []);
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+
+    if (viewCart && body) {
+      body.style.overflow = 'hidden';
+    } else if (body) {
+      body.style.overflow = 'auto';
+    };
+  }, [viewCart]);
   
   return (
     <AppContext.Provider value={{

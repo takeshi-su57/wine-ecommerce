@@ -16,6 +16,7 @@ const CartContainer = styled.div`
   box-sizing: border-box;
   padding: 10px;
   position: relative;
+  overflow-y: auto;
 
   @media(max-width: 580px) {
     width: 100%;
