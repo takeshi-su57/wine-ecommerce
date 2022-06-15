@@ -157,7 +157,7 @@ const BtnContainer = styled.div<Props>`
   }
 `;
 
-const ContainerPainelFloat = styled.div`
+const ContainerPainelFloat = styled.div<Props>`
   background-color: white;
   position: fixed;
   bottom: 0;
@@ -217,17 +217,19 @@ const ContainerPainelFloat = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45%;
+    width: 50%;
 
     button {
-      background-color: #7EBC43;
+      background-color: ${(props) => props.progress ? '#a82472' : '#7EBC43'};
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
       color: white;
       border-radius: 5px;
-      font-size: 18px;
+      font-size: 14px;
+      font-weight: 600;
       border: none;
-      padding: 15px;
+      padding: 15px 0;
+      transition: 0.5s;
       width: 90%;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
     }
   }
 `;

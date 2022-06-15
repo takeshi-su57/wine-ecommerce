@@ -107,7 +107,7 @@ const DetailProduct = () => {
           </ProductComment>
         </Description>
 
-        <ContainerPainelFloat>
+        <ContainerPainelFloat progress={ status !== 'Adicionar' }>
           <div>
             <span>{ `${productFocus.discount}% OFF` }</span>
             <span>{ `R$ ${productFocus.price.toFixed(2).replace(/\./, ',')}` }</span>
@@ -121,8 +121,8 @@ const DetailProduct = () => {
           </div>
 
           <div>
-            <button onClick={ () => saveInCart({ id, name, image, priceMember, priceNonMember }, count) }>
-              Adicionar
+            <button onClick={ () => addInWineBox({ name, image, id, priceMember, priceNonMember }) }>
+              { status }
             </button>
           </div>
         </ContainerPainelFloat>
@@ -195,8 +195,8 @@ const DetailProduct = () => {
               <button onClick={ increment }>+</button>
             </div>
             <button
-              onClick={ () => addInWineBox({ name, image, id, priceMember, priceNonMember })
-            }>
+              onClick={ () => addInWineBox({ name, image, id, priceMember, priceNonMember })}
+            >
               { status }
             </button>
           </BtnContainer>
