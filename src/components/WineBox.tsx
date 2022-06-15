@@ -6,12 +6,20 @@ import { CardProduct, BackContainer, Body, Container, Footer, Header, NoProducts
 import { ArrowBack, Close } from './icons';
 
 const Cart = () => {
-  const { setViewCart } = useContext(AppContext);
+  const { setViewCart, removeFromWineBox } = useContext(AppContext);
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
+  const removeItem = (id: number, price: number) => {
+    const updateWinebox = cart.filter((product: ProductCart) => product.id !== id);
+    setCart(updateWinebox);
+    const convertNoBugTotalPrice = Number((total - price).toFixed(2))
+    setTotal(convertNoBugTotalPrice);
+    removeFromWineBox(updateWinebox, convertNoBugTotalPrice);
+  };
+
   useEffect(() => {
-    const data = localStorage.getItem('cart_wine');
+    const data = localStorage.getItem('winebox');
 
     if (data) {
       const { items, totalPrice } = JSON.parse(data);
@@ -74,7 +82,10 @@ const Cart = () => {
                       (product.priceMember*product.quantity).toFixed(2).replace(/\./, ',')
                     }` }</h2>
                   </span>
-                  <button>
+                  <button onClick={ () => {
+                    const finalPrice = Number((product.priceMember*product.quantity).toFixed(2));
+                    removeItem(product.id, finalPrice);
+                  } }>
                     <Close />
                   </button>
                 </div>

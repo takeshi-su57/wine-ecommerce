@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { getProductsInit, loadMoreProducts } from 'services/apiWine';
-import { AppContextType, DEFAULT_VALUE, Product, propsProvider } from './types';
+import { AppContextType, DEFAULT_VALUE, Product, ProductCart, propsProvider } from './types';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
 
@@ -25,7 +25,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   };
 
   const saveInCart = (product: Product, quantity: number) => {
-    const cartData = localStorage.getItem('cart_wine');
+    const cartData = localStorage.getItem('winebox');
 
     if (cartData && JSON.parse(cartData).items.length) {
       let updateCart = []; 
@@ -41,20 +41,29 @@ export const AppProvider = ({ children }: propsProvider) => {
         updateCart = [...items, { ...product, quantity }];
       }
 
-      localStorage.setItem('cart_wine', JSON.stringify({
+      localStorage.setItem('winebox', JSON.stringify({
         items: updateCart,
         totalPrice: Number((totalPrice + product.priceMember * quantity).toFixed(2)),
       }));
       
       setCartCount(updateCart.length);
     } else {
-      localStorage.setItem('cart_wine', JSON.stringify({
+      localStorage.setItem('winebox', JSON.stringify({
         items: [{ ...product, quantity }],
         totalPrice: Number((product.priceMember * quantity).toFixed(2)),
       }));
       setCartCount(1);
     };
-  }
+  };
+
+  const removeFromWineBox = (Items: ProductCart[], totalPrice: number) => {
+    localStorage.setItem('winebox', JSON.stringify({
+      items: Items,
+      totalPrice,
+    }));
+    
+    setCartCount(Items.length);
+  };
 
   const loadMore = async () => {
     setLoading(true);
@@ -62,15 +71,15 @@ export const AppProvider = ({ children }: propsProvider) => {
     const data = await loadMoreProducts(limit + 12);
     setProducts(data.items);
     setLoading(false);
-  }
+  };
 
   useEffect(() => {
     getInitInfo();
 
-    const cartData = localStorage.getItem('cart_wine');
+    const cartData = localStorage.getItem('winebox');
 
     if (!cartData) {
-      localStorage.setItem('cart_wine', JSON.stringify({ items: [], totalPrice: 0 }));
+      localStorage.setItem('winebox', JSON.stringify({ items: [], totalPrice: 0 }));
     } else {
       setCartCount(JSON.parse(cartData).items.length);
     };
@@ -97,7 +106,8 @@ export const AppProvider = ({ children }: propsProvider) => {
       loadMore,
       loading,
       viewCart,
-      setViewCart
+      setViewCart,
+      removeFromWineBox
     }}>
       { children }
     </AppContext.Provider>

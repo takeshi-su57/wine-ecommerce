@@ -52,6 +52,7 @@ export const DEFAULT_VALUE = {
   saveInCart: () => {},
   loadMore: () => {},
   setViewCart: () => {},
+  removeFromWineBox: () => {},
 };
 
 export type AppContextType = {
@@ -64,6 +65,7 @@ export type AppContextType = {
   loading: boolean;
   viewCart: boolean;
   setViewCart: Function;
+  removeFromWineBox: Function;
   details: {
     page: number;
     itemsPerPage: number;
