@@ -92,13 +92,11 @@ const Home: NextPage = () => {
             </button>
           </ContainerPagesBtns>
 
-          
-
-          {/* <div>
+          <div>
             <LoadMore onClick={ () => loadMore() } disabled={ products.length === details.totalItems }>
               { loading ? <Loading /> : <h3>Mostrar mais</h3> }
             </LoadMore>
-          </div> */}
+          </div>
         </SectionProducts>
       </SectionCenter>
 
