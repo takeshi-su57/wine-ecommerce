@@ -1,6 +1,7 @@
 describe('Browsing the store', () => {
   beforeEach('teste', () => {
-    cy.intercept('/products*', { fixture: 'wine-api.json' });
+    cy.intercept('/products?page=1&limit=12', { fixture: 'wine-api-1.json' });
+    cy.intercept('/products?page=2&limit=12', { fixture: 'wine-api-2.json' });
   });
 
   describe.only('Testando Mock', () => {

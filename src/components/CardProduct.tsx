@@ -27,11 +27,11 @@ const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, disc
         data-cy={`home_page_card_product-${id}`}
       >
         <ProductImage>
-          {/* <Image
+          <Image
             src={ image }
             alt="Product Preview"
             width="100%" height="100%" layout="responsive" objectFit="contain"
-          /> */}
+          />
         </ProductImage>
         <ProductName>
           { name }
