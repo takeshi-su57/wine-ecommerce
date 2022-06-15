@@ -44,6 +44,7 @@ export const DEFAULT_VALUE = {
     itemsPerPage: 0,
     totalItems: 0,
     totalPages: 0,
+    pagination: [0],
   },
   cartCount: 0,
   loading: true,
@@ -51,6 +52,7 @@ export const DEFAULT_VALUE = {
   defineFocusProduct: () => {},
   saveInCart: () => {},
   loadMore: () => {},
+  loadMoreForPage: () => {},
   setViewCart: () => {},
   removeFromWineBox: () => {},
 };
@@ -62,6 +64,7 @@ export type AppContextType = {
   saveInCart: Function;
   cartCount: number;
   loadMore: Function;
+  loadMoreForPage: Function;
   loading: boolean;
   viewCart: boolean;
   setViewCart: Function;
@@ -71,9 +74,14 @@ export type AppContextType = {
     itemsPerPage: number;
     totalItems: number;
     totalPages: number;
+    pagination: number[];
   };
 };
 
 export type propsProvider = {
   children: JSX.Element;
 };
+
+export interface Props {
+  actualPage: any;
+}

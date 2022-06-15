@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProductsInit, loadMoreProducts } from 'services/apiWine';
+import { getProductsInit, loadMoreProducts, loadMoreProductsForPage } from 'services/apiWine';
 import { AppContextType, DEFAULT_VALUE, Product, ProductCart, propsProvider } from './types';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
@@ -16,7 +16,14 @@ export const AppProvider = ({ children }: propsProvider) => {
   const getInitInfo = async () => {
     const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
     setProducts(items);
-    setDetails({ page, totalPages, itemsPerPage, totalItems });
+
+    let arrayPages = [];
+
+    for (let index = 1; index <= totalPages; index++) {
+      arrayPages.push(index);
+    }
+
+    setDetails({ page, totalPages, itemsPerPage, totalItems, pagination: arrayPages });
     setLoading(false);
   };
 
@@ -73,6 +80,15 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLoading(false);
   };
 
+  const loadMoreForPage = async (pageNum: number) => {
+    setLoading(true);
+    setLimit(12);
+    const { items, page } = await loadMoreProductsForPage(pageNum);
+    setProducts(items);
+    setDetails({ ...details, page });
+    setLoading(false);
+  };
+
   useEffect(() => {
     getInitInfo();
 
@@ -104,6 +120,7 @@ export const AppProvider = ({ children }: propsProvider) => {
       defineFocusProduct,
       saveInCart,
       loadMore,
+      loadMoreForPage,
       loading,
       viewCart,
       setViewCart,
