@@ -1,24 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  /* @font-face {
-    font-family: 'Neo Sans';
-    src: url(''),
-         url('fonts/Neo-Sans-Std-Regular.otf');
-         
-  }
-
-  @font-face {
-    font-family: 'Neo Sans 2';
-    src: url('fonts/Neo-Sans-Std-Light.otf');
-  } */
+  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
   html {
     box-sizing: border-box;
   }
 
   body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: #F5F5F5;
     margin: 0;
     padding: 0;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const FloatContainer = styled.div`
+const WineBoxBackContainer = styled.div`
   background-color: #0000005d;
   position: fixed;
   top: 0;
@@ -8,18 +8,33 @@ const FloatContainer = styled.div`
   height: 100%;
 `;
 
-const CartContainer = styled.div`
+const WineBoxContainer = styled.div`
   background-color: white;
   width: 500px;
-  float: right;
   height: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  position: relative;
-  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
 
   @media(max-width: 580px) {
     width: 100%;
+  }
+`;
+
+const WineBoxHeader = styled.div`
+  background-color: whitesmoke;
+  padding: 20px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  width: 100%;
+  
+  span {
+    display: flex;
+    cursor: pointer;
+
+    span {
+      margin-left: 10px;
+    }
   }
 `;
 
@@ -99,4 +114,4 @@ const BtnFinalized = styled.button`
   font-weight: bold;
 `;
 
-export { CartContainer, FloatContainer, BtnCloseCart, CardProductCart, BtnFinalized };
+export { WineBoxBackContainer, WineBoxContainer, WineBoxHeader, BtnCloseCart, CardProductCart, BtnFinalized };
