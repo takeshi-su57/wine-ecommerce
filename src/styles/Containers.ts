@@ -21,10 +21,22 @@ const SectionProducts = styled.section`
   @media(max-width: 1150px) {
     float: none;
     margin: 0 auto;
+    width: 90%;
+  }
+
+  @media(max-width: 920px) {
     width: 70%;
   }
 
   @media(max-width: 800px) {
+    width: 80%;
+  }
+
+  @media(max-width: 700px) {
+    width: 90%;
+  }
+
+  @media(max-width: 630px) {
     width: 100%;
   }
 `;
@@ -45,7 +57,8 @@ const SectionFlexProduct = styled.section`
   margin-top: 20px;
   position: relative;
 
-  @media(max-width: 1000px) {
+  @media(max-width: 900px) {
+    align-items: center;
     flex-direction: column;
   }
 `;

@@ -5,12 +5,14 @@ import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
-import LoadMore from 'styles/pages/store/LoadMoreBtn';
+import { LoadMore, ContainerPagesBtns, BtnsPages } from 'styles/pages/store/LoadMoreBtn';
 import Loading from 'components/Loading';
-import Cart from 'components/Cart';
+import WineBox from 'components/WineBox';
+import { useMediaQuery } from 'hooks/useMediaQuery';
 
 const Home: NextPage = () => {
-  const { details, products, loadMore, loading, viewCart } = useContext(AppContext);
+  const { details, products, loadMore, loading, viewCart, loadMoreForPage } = useContext(AppContext);
+  const inMobile = useMediaQuery('(max-width: 600px)');
 
   if (products.length === 0) {
     return (
@@ -25,8 +27,22 @@ const Home: NextPage = () => {
     )
   }
 
+  if (loading && !inMobile) {
+    return (
+      <Main>
+      <Header />
+      <SectionCenter>
+        <Filter />
+        <SectionLoading>
+          <Loading />
+        </SectionLoading>
+      </SectionCenter>
+    </Main>
+    )
+  }
+
   return (
-    <Main>
+    <Main style={{ overflow: 'hidden' }}>
       <Header />
       <SectionCenter>
         <Filter />
@@ -50,15 +66,47 @@ const Home: NextPage = () => {
               ))
             }
           </ProductsFlex>
-          <div>
-            <LoadMore onClick={ () => loadMore() } disabled={ products.length === details.totalItems }>
-              { loading ? <Loading /> : <h3>Mostrar mais</h3> }
-            </LoadMore>
-          </div>
+
+          {
+            inMobile ? (
+              <div>
+                <LoadMore onClick={ () => loadMore() } disabled={ products.length === details.totalItems }>
+                  { loading ? <Loading /> : <h3>Mostrar mais</h3> }
+                </LoadMore>
+              </div>
+            ) : (
+              <ContainerPagesBtns>
+                <button
+                  onClick={ () => loadMoreForPage(details.page - 1) }
+                  disabled={ details.page === 1 }>
+                  &lt;&lt; Anterior
+                </button>
+
+                {
+                  details.pagination.map((page, index) => (
+                    <BtnsPages
+                      key={ index }
+                      onClick={ () => loadMoreForPage(page) }
+                      actualPage={ page === details.page ? true : false }
+                    >
+                      { page }
+                    </BtnsPages>
+                  ))
+                }
+                
+                <button
+                  onClick={ () => loadMoreForPage(details.page + 1) }
+                  disabled={ (details.page + 1) > details.totalPages }
+                >
+                  Próximo &gt;&gt;
+                </button>
+              </ContainerPagesBtns>
+            )
+          }
         </SectionProducts>
       </SectionCenter>
 
-      { viewCart ? <Cart /> : '' }
+      { viewCart ? <WineBox /> : '' }
     </Main>
   );
 };

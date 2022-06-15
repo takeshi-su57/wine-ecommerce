@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProductsInit, loadMoreProducts } from 'services/apiWine';
-import { AppContextType, DEFAULT_VALUE, Product, propsProvider } from './types';
+import { getProductsInit, loadMoreProducts, loadMoreProductsForPage } from 'services/apiWine';
+import { AppContextType, DEFAULT_VALUE, Product, ProductCart, propsProvider } from './types';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
 
@@ -16,40 +16,61 @@ export const AppProvider = ({ children }: propsProvider) => {
   const getInitInfo = async () => {
     const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
     setProducts(items);
-    setDetails({ page, totalPages, itemsPerPage, totalItems });
+
+    let arrayPages = [];
+
+    for (let index = 1; index <= totalPages; index++) {
+      arrayPages.push(index);
+    }
+
+    setDetails({ page, totalPages, itemsPerPage, totalItems, pagination: arrayPages });
     setLoading(false);
   };
 
-  const defineFocusProduct = (index: number) => {
-    setProdFocus(products[index]);
+  const defineFocusProduct = (id: number) => {
+    setProdFocus(products.find((product: Product) => product.id === id));
   };
 
   const saveInCart = (product: Product, quantity: number) => {
-    const cartData = localStorage.getItem('cart_wine');
+    const cartData = localStorage.getItem('winebox');
 
-    if (!cartData) {
-      localStorage.setItem('cart_wine', JSON.stringify([{ ...product, quantity }]));
-      setCartCount(1);
-    } else {
+    if (cartData && JSON.parse(cartData).items.length) {
       let updateCart = []; 
-      let cart = JSON.parse(cartData);
+      let { items, totalPrice } = JSON.parse(cartData);
 
-      const productInUpdate = cart.find((Obj: Product) => Obj.id === product.id);
+      const productInUpdate = items.find((Obj: Product) => Obj.id === product.id);
 
       if (productInUpdate) {
         productInUpdate['quantity'] += quantity;
-        const allProductsinCart = cart.filter((Obj: Product) => Obj.id !== product.id);
-        console.log(allProductsinCart);
+        const allProductsinCart = items.filter((Obj: Product) => Obj.id !== product.id);
         updateCart = [...allProductsinCart, productInUpdate];
-        localStorage.setItem('cart_wine', JSON.stringify(updateCart));
       } else {
-        updateCart = [...cart, { ...product, quantity }];
-        localStorage.setItem('cart_wine', JSON.stringify(updateCart));
+        updateCart = [...items, { ...product, quantity }];
       }
+
+      localStorage.setItem('winebox', JSON.stringify({
+        items: updateCart,
+        totalPrice: Number((totalPrice + product.priceMember * quantity).toFixed(2)),
+      }));
       
       setCartCount(updateCart.length);
+    } else {
+      localStorage.setItem('winebox', JSON.stringify({
+        items: [{ ...product, quantity }],
+        totalPrice: Number((product.priceMember * quantity).toFixed(2)),
+      }));
+      setCartCount(1);
     };
-  }
+  };
+
+  const removeFromWineBox = (Items: ProductCart[], totalPrice: number) => {
+    localStorage.setItem('winebox', JSON.stringify({
+      items: Items,
+      totalPrice,
+    }));
+    
+    setCartCount(Items.length);
+  };
 
   const loadMore = async () => {
     setLoading(true);
@@ -57,19 +78,38 @@ export const AppProvider = ({ children }: propsProvider) => {
     const data = await loadMoreProducts(limit + 12);
     setProducts(data.items);
     setLoading(false);
-  }
+  };
+
+  const loadMoreForPage = async (pageNum: number) => {
+    setLoading(true);
+    setLimit(12);
+    const { items, page } = await loadMoreProductsForPage(pageNum);
+    setProducts(items);
+    setDetails({ ...details, page });
+    setLoading(false);
+  };
 
   useEffect(() => {
     getInitInfo();
 
-    const cartData = localStorage.getItem('cart_wine');
+    const cartData = localStorage.getItem('winebox');
 
     if (!cartData) {
-      localStorage.setItem('cart_wine', JSON.stringify([]));
+      localStorage.setItem('winebox', JSON.stringify({ items: [], totalPrice: 0 }));
     } else {
-      setCartCount(JSON.parse(cartData).length);
+      setCartCount(JSON.parse(cartData).items.length);
     };
   }, []);
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+
+    if (viewCart && body) {
+      body.style.overflow = 'hidden';
+    } else if (body) {
+      body.style.overflow = 'auto';
+    };
+  }, [viewCart]);
   
   return (
     <AppContext.Provider value={{
@@ -80,9 +120,11 @@ export const AppProvider = ({ children }: propsProvider) => {
       defineFocusProduct,
       saveInCart,
       loadMore,
+      loadMoreForPage,
       loading,
       viewCart,
-      setViewCart
+      setViewCart,
+      removeFromWineBox
     }}>
       { children }
     </AppContext.Provider>

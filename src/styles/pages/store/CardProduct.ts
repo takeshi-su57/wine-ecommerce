@@ -5,8 +5,8 @@ const CardContainer = styled.div`
   margin-top: 20px;
   width: 260px;
 
-  @media(max-width: 570px) {
-    width: 200px;
+  @media(max-width: 600px) {
+    width: 48%;
   }
 `;
 
@@ -19,14 +19,18 @@ const Card = styled.div`
   box-shadow: 0px 9px 14px rgba(0, 0, 0, 0.1);
   height: 360px;
   padding: 10px;
+
+  @media(max-width: 600px) {
+    min-height: 390px;
+  }
 `;
 
 const ProductImage = styled.div`
-  min-height: 220px;
+  height: auto;
   width: 220px;
   margin: 0 auto;
 
-  @media(max-width: 900px) {
+  @media(max-width: 600px) {
     width: 100%;
   }
 `;
@@ -63,6 +67,10 @@ const ProductPriceSocial = styled.p`
 
     span {
       font-size: 20px;
+    }
+
+    @media(max-width: 600px) {
+      display: inline-block;
     }
   }
 `;
