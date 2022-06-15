@@ -130,4 +130,73 @@ const BtnMenu = styled.button`
   }
 `;
 
-export { HeaderContent, HeaderContainer, Logo, Navbar, BtnsHeader, BtnMenu };
+const MenuContainer = styled.div`
+  background-color: #0000005d;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+`;
+
+const Menu = styled.section`
+  background-color: white;
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: viewUpMenu;
+  animation-duration: 0.2s;
+
+  button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 20px;
+    font-size: 25px;
+  }
+
+  nav {
+    margin-top: 20px;
+    width: 100%;
+
+    ul {
+      padding: 0;
+
+      li {
+        margin-bottom: 20px;
+        list-style: none;
+
+        a {
+          font-size: 24px;
+          display: block; 
+          padding: 10px 0;
+          text-decoration: none;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  @keyframes viewUpMenu {
+    from { left: -300px; }
+  }
+`;
+
+export {
+  HeaderContent,
+  HeaderContainer,
+  Logo,
+  Navbar,
+  BtnsHeader,
+  BtnMenu,
+  MenuContainer,
+  Menu,
+};
