@@ -41,6 +41,7 @@ const ProductInformation = () => {
   
   const { name, image, id, priceMember, priceNonMember  } = productFocus;
 
+  /* Versão para dispositivos com no máximo 900px de largura */
   if (inMobile) {
     return (
       <SectionFlexProduct>
@@ -101,7 +102,8 @@ const ProductInformation = () => {
       </SectionFlexProduct>
     );
   };
-    
+  
+  /* Versão para dispositivos com no mínimo 900px de largura */
   return (
     <>
       <BtnGoBack
@@ -123,7 +125,9 @@ const ProductInformation = () => {
           <LinksNavigate>
             <a href="">Vinhos</a> &gt; <a href="">{ productFocus.country }</a> &gt; { productFocus.region }
           </LinksNavigate>
-          <ProductName>{ productFocus.name }</ProductName>
+          <ProductName data-cy="details_products_name_product">
+            { productFocus.name }
+          </ProductName>
           <ProductDetail>
             <Image
               src={ productFocus.flag }

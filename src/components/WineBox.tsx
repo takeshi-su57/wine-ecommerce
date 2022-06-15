@@ -18,12 +18,26 @@ const Cart = () => {
     removeFromWineBox(updateWinebox, convertNoBugTotalPrice);
   };
 
+  const sortForName = (a: ProductCart, b: ProductCart) => {
+    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    // names must be equal
+    return 0;
+  };
+
   useEffect(() => {
     const data = localStorage.getItem('winebox');
 
     if (data) {
       const { items, totalPrice } = JSON.parse(data);
-      setCart(items);
+      setCart(items.sort(sortForName));
       setTotal(totalPrice);
     }
   }, []);
@@ -70,22 +84,29 @@ const Cart = () => {
                 <div>
                   <Image
                     src={ product.image }
-                    alt="Landscape picture"
+                    alt="Preview product"
                     width="100%" height="100%" layout="responsive" objectFit="contain"
                   />
                 </div> 
                 <div>
-                  <h3>{ product.name }</h3>
+                  <h3 data-cy={`winebox-card-product-name-${i}`}>{ product.name }</h3>
                   <span>
-                    <h4>{ `R$ ${product.priceMember.toFixed(2).replace(/\./, ',')} x  ${ product.quantity }` }</h4>
-                    <h2>{ `R$ ${
-                      (product.priceMember*product.quantity).toFixed(2).replace(/\./, ',')
-                    }` }</h2>
+                    <h4 data-cy={`winebox-card-product-price-mult-${i}`}>
+                      { `R$ ${product.priceMember.toFixed(2).replace(/\./, ',')} x  ${ product.quantity }` }
+                    </h4>
+                    <h2 data-cy={`winebox-card-product-price-${i}`}>
+                      { 
+                        `R$ ${(product.priceMember*product.quantity).toFixed(2).replace(/\./, ',')}` 
+                      }
+                    </h2>
                   </span>
-                  <button onClick={ () => {
-                    const finalPrice = Number((product.priceMember*product.quantity).toFixed(2));
-                    removeItem(product.id, finalPrice);
-                  } }>
+                  <button 
+                    onClick={ () => {
+                      const finalPrice = Number((product.priceMember*product.quantity).toFixed(2));
+                      removeItem(product.id, finalPrice);
+                    } }
+                    data-cy={`winebox-card-product-btn-delete-${i}`}
+                  >
                     <Close />
                   </button>
                 </div>
@@ -95,7 +116,7 @@ const Cart = () => {
         </Body>
 
         <Footer data-cy="winebox-footer">
-          <div>
+          <div data-cy="winebox-footer-total-price">
             <span>Total</span>
             <span>
               R$ { total.toFixed(2).replace(/\./, ',') }
