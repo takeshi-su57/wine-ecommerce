@@ -66,6 +66,8 @@ export const AppProvider = ({ children }: propsProvider) => {
       }));
       setCartCount(1);
     };
+
+    return true;
   };
 
   const removeFromWineBox = (Items: ProductCart[], totalPrice: number) => {

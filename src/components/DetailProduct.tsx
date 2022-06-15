@@ -20,11 +20,26 @@ import {
 } from 'styles/components/DetailProduct';
 import { ArrowBack } from './icons';
 import Router from 'next/router';
+import { ProductWineBox } from 'contexts/types';
 
 const DetailProduct = () => {
   const { productFocus, saveInCart } = useContext(AppContext);
   const [count, setCount] = useState(1);
   const inMobile = useMediaQuery('(max-width: 900px)');
+  const [status, setStatus] = useState('Adicionar');
+
+  const addInWineBox = (product: ProductWineBox) => {
+    setStatus('Salvando...');
+    saveInCart(product, count)
+
+    setTimeout(() => {
+      setStatus('Adicionado ao WineBox!');
+    }, 2000);
+
+    setTimeout(() => {
+      setStatus('Adicionar');
+    }, 4000);
+  };
 
   const increment = () => {
     setCount(count + 1);
@@ -106,7 +121,7 @@ const DetailProduct = () => {
           </div>
 
           <div>
-            <button onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, count) }>
+            <button onClick={ () => saveInCart({ id, name, image, priceMember, priceNonMember }, count) }>
               Adicionar
             </button>
           </div>
@@ -168,7 +183,7 @@ const DetailProduct = () => {
           <ProductComment>
             { productFocus.sommelierComment }
           </ProductComment>
-          <BtnContainer>
+          <BtnContainer progress={ status !== 'Adicionar' }>
             <div>
               <button
                 disabled={ count === 1 ? true : false }
@@ -179,8 +194,10 @@ const DetailProduct = () => {
               <span>{ count }</span>
               <button onClick={ increment }>+</button>
             </div>
-            <button onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, count) }>
-              Adicionar
+            <button
+              onClick={ () => addInWineBox({ name, image, id, priceMember, priceNonMember })
+            }>
+              { status }
             </button>
           </BtnContainer>
         </InfoContainer>

@@ -3,7 +3,7 @@ import Header from 'components/Header';
 import { Main, ProductsFlex, SectionCenter, SectionError, SectionLoading, SectionProducts } from 'styles/Containers';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 import { LoadMore, ContainerPagesBtns, BtnsPages } from 'styles/components/LoadMoreBtn';
 import Loading from 'components/Loading';
@@ -14,21 +14,6 @@ const Home: NextPage = () => {
   const { details, products, loadMore, loading, viewCart, loadMoreForPage } = useContext(AppContext);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
-  /* Tela de loading em um dispositivo mobile */
-  if (loading && inMobile) {
-    return (
-      <Main>
-      <Header />
-      <SectionCenter>
-        <SectionLoading>
-          <Loading />
-        </SectionLoading>
-      </SectionCenter>
-    </Main>
-    );
-  };
-
-  /* Tela de loading em um desktop */
   if (loading && !inMobile) {
     return (
       <Main>

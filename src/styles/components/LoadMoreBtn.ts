@@ -28,7 +28,7 @@ const ContainerPagesBtns = styled.div`
 `;
 
 const BtnsPages = styled.button<Props>`
-  background-color: ${(props) => props.actualPage ? '#a82472' : 'transparent'};;
+  background-color: ${(props) => props.actualPage ? '#a82472' : 'transparent'};
   color: ${(props) => props.actualPage ? 'white' : '#a82472'};
   cursor: pointer;
   border: 2px solid #a82472;

@@ -11,11 +11,25 @@ import {
   ProductPriceSocial,
 } from 'styles/components/CardProduct';
 import Image from 'next/image';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 
 const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, discount }: ProductCard) => {
   const { defineFocusProduct, saveInCart } = useContext(AppContext);
+  const [status, setStatus] = useState('Adicionar');
+
+  const addInWineBox = () => {
+    setStatus('Salvando...');
+    saveInCart({ name, image, id, priceMember, priceNonMember }, 1)
+
+    setTimeout(() => {
+      setStatus('Adicionado ao WineBox!');
+    }, 2000);
+
+    setTimeout(() => {
+      setStatus('Adicionar');
+    }, 4000);
+  };
 
   return (
     <CardContainer>
@@ -48,10 +62,11 @@ const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, disc
         </ProductPriceNoSocial>
       </Card>
       <BtnAddProductCart
-        onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, 1) }
+        onClick={ () => addInWineBox() }
         data-cy={`card_product-btn-add-${id}`}
+        progress={ status !== 'Adicionar' }
       >
-        Adicionar
+        { status }
       </BtnAddProductCart>
     </CardContainer>
   );

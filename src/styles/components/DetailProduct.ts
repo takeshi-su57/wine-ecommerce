@@ -1,3 +1,4 @@
+import { Props } from 'contexts/types';
 import styled from 'styled-components';
 
 const BtnGoBack = styled.button`
@@ -110,10 +111,11 @@ const Description = styled.div`
   }
 `;
 
-const BtnContainer = styled.div`
-  background-color: #7EBC43;
+const BtnContainer = styled.div<Props>`
+  background-color: ${(props) => props.progress ? '#a82472' : '#7EBC43'};
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 300px;
   color: white;
   border-radius: 2px;
@@ -121,8 +123,13 @@ const BtnContainer = styled.div`
   padding: 15px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
   margin-bottom: 40px;
-
+  min-height: 65px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  
   div {
+    display: ${(props) => props.progress ? 'none' : 'flex'};
+
     span {
       margin: 0 20px;
     }

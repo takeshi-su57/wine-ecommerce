@@ -1,3 +1,4 @@
+import { Props } from 'contexts/types';
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
@@ -82,8 +83,8 @@ const ProductPriceNoSocial = styled.p`
   color: #888888;
 `;
 
-const BtnAddProductCart = styled.button`
-  background-color: #7EBC43;
+const BtnAddProductCart = styled.button<Props>`
+  background-color: ${(props) => props.progress ? '#a82472' : '#7EBC43'};
   border: none;
   color: white;
   cursor: pointer;
@@ -94,6 +95,11 @@ const BtnAddProductCart = styled.button`
   padding: 10px;
   text-transform: uppercase;
   width: 100%;
+  transition: 0.5s;
+
+  @media(max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 export {

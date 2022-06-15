@@ -27,6 +27,14 @@ export interface ProductCard {
   priceNonMember: number;
 }
 
+export interface ProductWineBox {
+  id: number;
+  name: string;
+  image: string;
+  priceMember: number;
+  priceNonMember: number;
+}
+
 export interface ProductCart {
   id: number;
   name: string;
@@ -87,5 +95,6 @@ export type propsProvider = {
 };
 
 export interface Props {
-  actualPage: any;
+  actualPage?: any;
+  progress?: any;
 }
