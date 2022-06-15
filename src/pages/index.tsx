@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 import LoadMore from 'styles/pages/store/LoadMoreBtn';
 import Loading from 'components/Loading';
-import Cart from 'components/Cart';
+import WineBox from 'components/WineBox';
 
 const Home: NextPage = () => {
   const { details, products, loadMore, loading, viewCart } = useContext(AppContext);
@@ -58,7 +58,7 @@ const Home: NextPage = () => {
         </SectionProducts>
       </SectionCenter>
 
-      { viewCart ? <Cart /> : '' }
+      { viewCart ? <WineBox /> : '' }
     </Main>
   );
 };
