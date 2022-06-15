@@ -111,7 +111,7 @@ const BtnsHeader = styled.div`
   }
 
   button:nth-child(2)  {
-    @media(max-width:400px) {
+    @media(max-width:500px) {
       display: none;
     }
   }

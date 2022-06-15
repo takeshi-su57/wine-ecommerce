@@ -57,7 +57,8 @@ const SectionFlexProduct = styled.section`
   margin-top: 20px;
   position: relative;
 
-  @media(max-width: 1000px) {
+  @media(max-width: 900px) {
+    align-items: center;
     flex-direction: column;
   }
 `;
