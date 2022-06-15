@@ -11,10 +11,10 @@ import WineBox from 'components/WineBox';
 import { useMediaQuery } from 'hooks/useMediaQuery';
 
 const Home: NextPage = () => {
-  const { details, products, loadMore, loading, viewCart, loadMoreForPage } = useContext(AppContext);
+  const { details, products, loadMore, loading, viewCart, loadMoreForPage, loadingData } = useContext(AppContext);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
-  if (loading && !inMobile) {
+  if (loading && !inMobile || loadingData) {
     return (
       <Main>
       <Header />

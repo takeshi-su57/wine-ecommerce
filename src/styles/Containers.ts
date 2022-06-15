@@ -68,12 +68,17 @@ const SectionLoading = styled.section`
   justify-content: center;
   align-items: center;
   min-height: 70vh;
+
+  @media(max-width: 1150px) {
+    min-height: auto;
+  }
 `;
 
 const SectionError = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: #b3b3b3;
   font-size: 30px;
 `;

@@ -57,6 +57,7 @@ export const DEFAULT_VALUE = {
   cartCount: 0,
   loading: true,
   viewCart: false,
+  loadingData: false,
   defineFocusProduct: () => {},
   saveInCart: () => {},
   loadMore: () => {},
@@ -77,6 +78,7 @@ export type AppContextType = {
   loadMore: Function;
   loadMoreForPage: Function;
   loading: boolean;
+  loadingData: boolean;
   viewCart: boolean;
   setViewCart: Function;
   removeFromWineBox: Function;
@@ -97,4 +99,5 @@ export type propsProvider = {
 export interface Props {
   actualPage?: any;
   progress?: any;
+  viewContainer?: boolean;
 }

@@ -1,10 +1,13 @@
 import { AppContext } from 'contexts/AppProvider';
+import { useMediaQuery } from 'hooks/useMediaQuery';
 import { useContext, useState } from 'react';
 import { FilterForm, SectionFilter } from 'styles/components/Filter';
 
 const Filter = () => {
   const { getByFilter, getInitInfo } = useContext(AppContext);
   const [allProducts, setNoFilter] = useState(true);
+  const [viewFilter, setView] = useState(false);
+  const inMobile = useMediaQuery('(max-width: 600px)');
 
   const getFilter = async (filter: string) => {
     setNoFilter(false);
@@ -16,9 +19,19 @@ const Filter = () => {
     getInitInfo();
   };
 
+  const viewFilterToggle = () => {
+    if (viewFilter) {
+      setView(false);
+    } else {
+      setView(true);
+    }
+  };
+
   return (
-    <SectionFilter>
-      <h3>Refine sua busca</h3>
+    <SectionFilter viewContainer={ viewFilter ? true : false }>
+      <h3 onClick={ inMobile ? viewFilterToggle : undefined }>
+        Refine sua busca
+      </h3>
 
       <h4>Por preço</h4>
 

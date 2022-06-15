@@ -10,6 +10,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [productFocus, setProdFocus] = useState(DEFAULT_VALUE.productFocus);
   const [cartCount, setCartCount] = useState(0);
   const [limit, setLimit] = useState(12);
+  const [loadingData, setLoadingData] = useState(false);
   const [loading, setLoading] = useState(true);
   const [viewCart, setViewCart] = useState(false);
   const [filter, setFilter] = useState('');
@@ -17,6 +18,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   const getInitInfo = async () => {
     setFilter('');
     setLoading(true);
+    setLoadingData(true);
 
     const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
     
@@ -30,6 +32,7 @@ export const AppProvider = ({ children }: propsProvider) => {
 
     setDetails({ page, totalPages, itemsPerPage, totalItems, pagination: arrayPages });
     setLoading(false);
+    setLoadingData(false);
   };
 
   const defineFocusProduct = (id: number) => {
@@ -104,7 +107,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   };
 
   const getByFilter = async (filter: string) => {
-    setLoading(true);
+    setLoadingData(true);
     setFilter(filter);
     setLimit(12);
     const { items, page, totalPages, itemsPerPage, totalItems } = await loadProductsByFilter(filter);
@@ -117,7 +120,7 @@ export const AppProvider = ({ children }: propsProvider) => {
     }
 
     setDetails({ page, totalPages, itemsPerPage, totalItems, pagination: arrayPages });
-    setLoading(false);
+    setLoadingData(false);
   }
 
   useEffect(() => {
@@ -155,6 +158,7 @@ export const AppProvider = ({ children }: propsProvider) => {
       loadMoreForPage,
       getByFilter,
       loading,
+      loadingData,
       viewCart,
       setViewCart,
       removeFromWineBox
