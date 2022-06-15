@@ -16,9 +16,15 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   right: 0;
+  animation: viewUp;
+  animation-duration: 0.2s;
 
   @media(max-width: 580px) {
     width: 100%;
+  }
+
+  @keyframes viewUp {
+    from { right: -500px; }
   }
 `;
 
@@ -49,43 +55,6 @@ const Body = styled.div`
   height: 80%;
   overflow: auto;
   padding: 20px;
-`;
-
-const Footer = styled.div`
-  background-color: white;
-  box-sizing: border-box;
-  height: 13%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    span {
-      font-size: 20px;
-      font-weight: bold;
-      color: #b6116e;
-    }
-
-    span:nth-child(2) {
-      font-size: 25px;
-    }
-  }
-
-  button {
-    background-color: #7EBC43;
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 15px;
-  }
 `;
 
 const CardProduct = styled.div`
@@ -134,6 +103,43 @@ const CardProduct = styled.div`
       right: 0;
       margin: 10px;
     }
+  }
+`;
+
+const Footer = styled.div`
+  background-color: white;
+  box-sizing: border-box;
+  height: 13%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #b6116e;
+    }
+
+    span:nth-child(2) {
+      font-size: 25px;
+    }
+  }
+
+  button {
+    background-color: #7EBC43;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 15px;
   }
 `;
 
