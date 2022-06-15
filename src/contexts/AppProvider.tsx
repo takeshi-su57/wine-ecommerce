@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProductsInit, loadByFilterForPage, loadMoreProducts, loadMoreProductsForPage, loadProductsByFilter } from 'services/apiWine';
+import { getProductsInit, loadByFilterForPage, loadMoreProducts, loadMoreProductsByFilter, loadMoreProductsForPage, loadProductsByFilter } from 'services/apiWine';
 import { AppContextType, DEFAULT_VALUE, Product, ProductCart, propsProvider } from './types';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
@@ -85,7 +85,13 @@ export const AppProvider = ({ children }: propsProvider) => {
   const loadMore = async () => {
     setLoading(true);
     setLimit(limit + 12);
-    const data = await loadMoreProducts(limit + 12);
+    let data;
+
+    if (filter) {
+      data = await loadMoreProductsByFilter((limit + 12), filter);
+    } else {
+      data = await loadMoreProducts(limit + 12);
+    }
     setProducts(data.items);
     setLoading(false);
   };
@@ -98,7 +104,7 @@ export const AppProvider = ({ children }: propsProvider) => {
     if (filter) {
       data = await loadByFilterForPage(filter, pageNum);
     } else {
-      data = await loadMoreProductsForPage(pageNum)
+      data = await loadMoreProductsForPage(pageNum);
     }
     const { items, page } = data;
     setProducts(items);
