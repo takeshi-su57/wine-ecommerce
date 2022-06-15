@@ -27,8 +27,8 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLoading(false);
   };
 
-  const defineFocusProduct = (index: number) => {
-    setProdFocus(products[index]);
+  const defineFocusProduct = (id: number) => {
+    setProdFocus(products.find((product: Product) => product.id === id));
   };
 
   const saveInCart = (product: Product, quantity: number) => {

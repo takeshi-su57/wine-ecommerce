@@ -18,7 +18,6 @@ const ProductInformation = () => {
   const { productFocus, saveInCart } = useContext(AppContext);
   const [count, setCount] = useState(1);
 
-  
   const increment = () => {
     setCount(count + 1);
   };
@@ -29,9 +28,11 @@ const ProductInformation = () => {
   
   if (!productFocus) {
     return (
-      <h1>Deu erro!</h1>
+      <h1>Erro inesperado!</h1>
     );
   };
+
+  console.log(productFocus);
   
   const { name, image, id, priceMember, priceNonMember  } = productFocus;
     
