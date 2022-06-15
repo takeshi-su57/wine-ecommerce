@@ -52,7 +52,7 @@ const Header = styled.div`
 const Body = styled.div`
   background-color: whitesmoke;
   box-sizing: border-box;
-  height: 80%;
+  height: 78%;
   overflow: auto;
   padding: 20px;
 `;
@@ -109,7 +109,7 @@ const CardProduct = styled.div`
 const Footer = styled.div`
   background-color: white;
   box-sizing: border-box;
-  height: 13%;
+  height: 15%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -143,4 +143,13 @@ const Footer = styled.div`
   }
 `;
 
-export { BackContainer, Container, Header, Body, Footer, CardProduct };
+const NoProducts = styled.div`
+  background-color: whitesmoke;
+  color: grey;
+  height: 93%;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 20px;
+`;
+
+export { BackContainer, Container, Header, Body, Footer, CardProduct, NoProducts };

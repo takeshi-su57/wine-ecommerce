@@ -27,27 +27,32 @@ export const AppProvider = ({ children }: propsProvider) => {
   const saveInCart = (product: Product, quantity: number) => {
     const cartData = localStorage.getItem('cart_wine');
 
-    if (!cartData) {
-      localStorage.setItem('cart_wine', JSON.stringify([{ ...product, quantity }]));
-      setCartCount(1);
-    } else {
+    if (cartData && JSON.parse(cartData).items.length) {
       let updateCart = []; 
-      let cart = JSON.parse(cartData);
+      let { items, totalPrice } = JSON.parse(cartData);
 
-      const productInUpdate = cart.find((Obj: Product) => Obj.id === product.id);
+      const productInUpdate = items.find((Obj: Product) => Obj.id === product.id);
 
       if (productInUpdate) {
         productInUpdate['quantity'] += quantity;
-        const allProductsinCart = cart.filter((Obj: Product) => Obj.id !== product.id);
-        console.log(allProductsinCart);
+        const allProductsinCart = items.filter((Obj: Product) => Obj.id !== product.id);
         updateCart = [...allProductsinCart, productInUpdate];
-        localStorage.setItem('cart_wine', JSON.stringify(updateCart));
       } else {
-        updateCart = [...cart, { ...product, quantity }];
-        localStorage.setItem('cart_wine', JSON.stringify(updateCart));
+        updateCart = [...items, { ...product, quantity }];
       }
+
+      localStorage.setItem('cart_wine', JSON.stringify({
+        items: updateCart,
+        totalPrice: Number((totalPrice + product.priceMember * quantity).toFixed(2)),
+      }));
       
       setCartCount(updateCart.length);
+    } else {
+      localStorage.setItem('cart_wine', JSON.stringify({
+        items: [{ ...product, quantity }],
+        totalPrice: Number((product.priceMember * quantity).toFixed(2)),
+      }));
+      setCartCount(1);
     };
   }
 
@@ -65,9 +70,9 @@ export const AppProvider = ({ children }: propsProvider) => {
     const cartData = localStorage.getItem('cart_wine');
 
     if (!cartData) {
-      localStorage.setItem('cart_wine', JSON.stringify([]));
+      localStorage.setItem('cart_wine', JSON.stringify({ items: [], totalPrice: 0 }));
     } else {
-      setCartCount(JSON.parse(cartData).length);
+      setCartCount(JSON.parse(cartData).items.length);
     };
   }, []);
 
