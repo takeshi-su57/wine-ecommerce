@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 import Header from 'components/Header';
-import { Main, ProductsFlex, SectionCenter, SectionLoading, SectionProducts } from 'styles/Containers';
+import { Main, ProductsFlex, SectionCenter, SectionError, SectionLoading, SectionProducts } from 'styles/Containers';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 import { LoadMore, ContainerPagesBtns, BtnsPages } from 'styles/components/LoadMoreBtn';
 import Loading from 'components/Loading';
@@ -14,7 +14,8 @@ const Home: NextPage = () => {
   const { details, products, loadMore, loading, viewCart, loadMoreForPage } = useContext(AppContext);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
-  if (products.length === 0) {
+  /* Tela de loading em um dispositivo mobile */
+  if (loading && inMobile) {
     return (
       <Main>
       <Header />
@@ -24,9 +25,10 @@ const Home: NextPage = () => {
         </SectionLoading>
       </SectionCenter>
     </Main>
-    )
-  }
+    );
+  };
 
+  /* Tela de loading em um desktop */
   if (loading && !inMobile) {
     return (
       <Main>
@@ -38,9 +40,25 @@ const Home: NextPage = () => {
         </SectionLoading>
       </SectionCenter>
     </Main>
-    )
-  }
+    );
+  };
 
+  /* Caso a requisição não retorne nenhum produto */
+  if (products.length === 0) {
+    return (
+      <Main>
+        <Header />
+        <SectionCenter>
+          <Filter />
+          <SectionError>
+            <h1>Nenhum produto foi encontrado!</h1>
+          </SectionError>
+        </SectionCenter>
+      </Main>
+    );
+  };
+
+  /* Caso a requisição retorne os dados esperados */
   return (
     <Main>
       <Header />
@@ -48,7 +66,7 @@ const Home: NextPage = () => {
         <Filter />
         <SectionProducts>
           <p>
-            <strong>{details.totalItems}</strong> produtos encontrados
+            <strong>{ details.totalItems }</strong> produtos encontrados
           </p>
           <ProductsFlex>
             {

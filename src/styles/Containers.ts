@@ -70,11 +70,20 @@ const SectionLoading = styled.section`
   min-height: 70vh;
 `;
 
+const SectionError = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b3b3b3;
+  font-size: 30px;
+`;
+
 export {
   Main,
   SectionCenter,
   SectionProducts,
   ProductsFlex,
   SectionFlexProduct,
-  SectionLoading
+  SectionLoading,
+  SectionError
 };

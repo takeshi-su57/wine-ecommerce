@@ -55,9 +55,12 @@ export const DEFAULT_VALUE = {
   loadMoreForPage: () => {},
   setViewCart: () => {},
   removeFromWineBox: () => {},
+  getByFilter: () => {},
+  getInitInfo: () => {},
 };
 
 export type AppContextType = {
+  getInitInfo: Function;
   products: Product[];
   productFocus: Product | undefined;
   defineFocusProduct: Function;
@@ -69,6 +72,7 @@ export type AppContextType = {
   viewCart: boolean;
   setViewCart: Function;
   removeFromWineBox: Function;
+  getByFilter: Function;
   details: {
     page: number;
     itemsPerPage: number;
