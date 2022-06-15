@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Header from 'components/layout/Header';
+import Header from 'components/Header';
 import { Main, ProductsFlex, SectionCenter, SectionLoading, SectionProducts } from 'styles/Containers';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';

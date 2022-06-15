@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Header from 'components/layout/Header';
+import Header from 'components/Header';
 import { Main, SectionCenter } from 'styles/Containers';
 import DetailProduct from 'components/DetailProduct';
 import WineBox from 'components/WineBox';

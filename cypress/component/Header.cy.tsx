@@ -1,4 +1,4 @@
-import Header from 'components/layout/Header';
+import Header from 'components/Header';
 
 describe('Header', () => {
   it('O componente é renderizado', () => {
