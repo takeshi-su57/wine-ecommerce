@@ -2,7 +2,7 @@ import { AppContext } from 'contexts/AppProvider';
 import { ProductCart } from 'contexts/types';
 import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
-import { CardProduct, BackContainer, Body, Container, Footer, Header, NoProducts } from 'styles/WineBox';
+import { CardProduct, BackContainer, Body, Container, Footer, Header, NoProducts } from 'styles/components/WineBox';
 import { ArrowBack, Close } from './icons';
 
 const Cart = () => {

@@ -1,4 +1,4 @@
-import { FilterForm, SectionFilter } from 'styles/pages/store/Filter';
+import { FilterForm, SectionFilter } from 'styles/components/Filter';
 
 const Filter = () => {
   return (

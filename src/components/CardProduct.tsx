@@ -9,7 +9,7 @@ import {
   ProductName,
   ProductPriceNoSocial,
   ProductPriceSocial,
-} from 'styles/pages/store/CardProduct';
+} from 'styles/components/CardProduct';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';

@@ -225,6 +225,12 @@ const ContainerPainelFloat = styled.div`
   }
 `;
 
+const ErrorLoadProduct = styled.h1`
+  color: #b3b3b3;
+  margin-top: 40px;
+  font-size: 30px;
+`;
+
 export {
   BtnGoBack,
   ImageContainer,
@@ -237,4 +243,5 @@ export {
   BtnContainer,
   Description,
   ContainerPainelFloat,
+  ErrorLoadProduct,
 };

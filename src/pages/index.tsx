@@ -5,7 +5,7 @@ import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
-import { LoadMore, ContainerPagesBtns, BtnsPages } from 'styles/pages/store/LoadMoreBtn';
+import { LoadMore, ContainerPagesBtns, BtnsPages } from 'styles/components/LoadMoreBtn';
 import Loading from 'components/Loading';
 import WineBox from 'components/WineBox';
 import { useMediaQuery } from 'hooks/useMediaQuery';

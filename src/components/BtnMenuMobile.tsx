@@ -1,4 +1,4 @@
-import { BtnMenu } from 'styles/Header';
+import { BtnMenu } from 'styles/components/Header';
 
 const MenuMobileBtn = () => {
   return (

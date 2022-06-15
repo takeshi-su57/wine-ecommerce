@@ -9,6 +9,7 @@ import {
   BtnGoBack,
   ContainerPainelFloat,
   Description,
+  ErrorLoadProduct,
   ImageContainer,
   InfoContainer,
   LinksNavigate,
@@ -16,11 +17,11 @@ import {
   ProductDetail,
   ProductName,
   ProductPrice
-} from 'styles/pages/product/Informations';
+} from 'styles/components/DetailProduct';
 import { ArrowBack } from './icons';
 import Router from 'next/router';
 
-const ProductInformation = () => {
+const DetailProduct = () => {
   const { productFocus, saveInCart } = useContext(AppContext);
   const [count, setCount] = useState(1);
   const inMobile = useMediaQuery('(max-width: 900px)');
@@ -35,7 +36,18 @@ const ProductInformation = () => {
   
   if (!productFocus) {
     return (
-      <h1>Erro inesperado!</h1>
+      <>
+        <BtnGoBack
+          onClick={ () => Router.push('/') }
+          data-cy="details_products_page_btn_back"
+        >
+          <ArrowBack />
+          Voltar
+        </BtnGoBack>
+        <ErrorLoadProduct>
+          Erro ao carregar o produto!
+        </ErrorLoadProduct>
+      </>
     );
   };
   
@@ -47,7 +59,7 @@ const ProductInformation = () => {
       <SectionFlexProduct>
         <InfoContainer>
           <LinksNavigate>
-            <a href="">Vinhos</a> &gt; <a href="">{ productFocus.country }</a> &gt; { productFocus.region }
+            <a href="#">Vinhos</a> &gt; <a href="#">{ productFocus.country }</a> &gt; { productFocus.region }
           </LinksNavigate>
           <ProductName>{ productFocus.name }</ProductName>
             <ProductDetail>
@@ -177,4 +189,4 @@ const ProductInformation = () => {
   );
 };
 
-export default ProductInformation;
+export default DetailProduct;

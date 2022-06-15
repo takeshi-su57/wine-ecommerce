@@ -1,4 +1,4 @@
-import { HeaderContainer, HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/Header';
+import { HeaderContainer, HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/components/Header';
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
 import Router from 'next/router';
