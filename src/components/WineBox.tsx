@@ -90,16 +90,16 @@ const Cart = () => {
                 </div> 
                 <div>
                   <h3 data-cy={`winebox-card-product-name-${i}`}>{ product.name }</h3>
-                  <span>
-                    <h4 data-cy={`winebox-card-product-price-mult-${i}`}>
+                  <div>
+                    <span data-cy={`winebox-card-product-price-mult-${i}`}>
                       { `R$ ${product.priceMember.toFixed(2).replace(/\./, ',')} x  ${ product.quantity }` }
-                    </h4>
-                    <h2 data-cy={`winebox-card-product-price-${i}`}>
+                    </span>
+                    <span data-cy={`winebox-card-product-price-${i}`}>
                       { 
                         `R$ ${(product.priceMember*product.quantity).toFixed(2).replace(/\./, ',')}` 
                       }
-                    </h2>
-                  </span>
+                    </span>
+                  </div>
                   <button 
                     onClick={ () => {
                       const finalPrice = Number((product.priceMember*product.quantity).toFixed(2));
