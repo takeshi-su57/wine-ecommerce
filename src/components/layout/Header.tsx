@@ -15,7 +15,7 @@ const Header = () => {
           <MenuMobileBtn />
           <Image
             src="/images/wine_logo.svg"
-            alt="Landscape picture"
+            alt="Wine Logo"
             width={ 100 }
             height={ 80 }
             onClick={ () => Router.push('/') }
@@ -50,16 +50,16 @@ const Header = () => {
               height={ 50 }
             />
           </button>
-          <button onClick={ () => setViewCart(true) }>
+          <button onClick={ () => setViewCart(true) } data-cy="winebox-btn">
             <div>
               <Image
                 src="/images/cart_icon.png"
-                alt="Cart Icon"
+                alt="WineBox Icon"
                 width={ 40 }
                 height={ 50 }
               />
             </div>
-            <div>
+            <div data-cy="winebox-btn-count">
               { cartCount }
             </div>
           </button>

@@ -15,6 +15,8 @@ export const AppProvider = ({ children }: propsProvider) => {
 
   const getInitInfo = async () => {
     const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
+    console.log(items);
+    
     setProducts(items);
 
     let arrayPages = [];

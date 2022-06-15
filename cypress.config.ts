@@ -9,6 +9,8 @@ export default defineConfig({
     video: false,
     baseUrl: "http://localhost:3000",
     projectId: "41jjfa",
+    viewportWidth: 1280,
+    viewportHeight: 720
   },
 
   component: {

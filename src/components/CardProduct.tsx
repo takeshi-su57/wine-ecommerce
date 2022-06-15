@@ -19,16 +19,19 @@ const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, disc
 
   return (
     <CardContainer>
-      <Card onClick={ () => {
-        defineFocusProduct(id);
-        Router.push(`/product/${id}`);
-      }}>
+      <Card 
+        onClick={ () => {
+          defineFocusProduct(id);
+          Router.push(`/product/${id}`);
+        }}
+        data-cy={`home_page_card_product-${id}`}
+      >
         <ProductImage>
-          <Image
+          {/* <Image
             src={ image }
-            alt="Landscape picture"
+            alt="Product Preview"
             width="100%" height="100%" layout="responsive" objectFit="contain"
-          />
+          /> */}
         </ProductImage>
         <ProductName>
           { name }
@@ -44,7 +47,10 @@ const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, disc
           Não sócio R$ { priceNonMember.toFixed(2).replace(/\./, ',') }
         </ProductPriceNoSocial>
       </Card>
-      <BtnAddProductCart onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, 1) }>
+      <BtnAddProductCart
+        onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, 1) }
+        data-cy={`card_product-btn-add-${id}`}
+      >
         Adicionar
       </BtnAddProductCart>
     </CardContainer>

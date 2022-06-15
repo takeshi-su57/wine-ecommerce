@@ -42,7 +42,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <Main style={{ overflow: 'hidden' }}>
+    <Main>
       <Header />
       <SectionCenter>
         <Filter />
@@ -78,7 +78,9 @@ const Home: NextPage = () => {
               <ContainerPagesBtns>
                 <button
                   onClick={ () => loadMoreForPage(details.page - 1) }
-                  disabled={ details.page === 1 }>
+                  disabled={ details.page === 1 }
+                  data-cy="home_page_navigate_btn-previous"
+                >
                   &lt;&lt; Anterior
                 </button>
 
@@ -88,6 +90,7 @@ const Home: NextPage = () => {
                       key={ index }
                       onClick={ () => loadMoreForPage(page) }
                       actualPage={ page === details.page ? true : false }
+                      data-cy={`home_page_navigate_btn-${index}`}
                     >
                       { page }
                     </BtnsPages>
@@ -97,6 +100,7 @@ const Home: NextPage = () => {
                 <button
                   onClick={ () => loadMoreForPage(details.page + 1) }
                   disabled={ (details.page + 1) > details.totalPages }
+                  data-cy="home_page_navigate_btn-next"
                 >
                   Próximo &gt;&gt;
                 </button>

@@ -104,7 +104,10 @@ const ProductInformation = () => {
     
   return (
     <>
-      <BtnGoBack onClick={ () => Router.push('/') }>
+      <BtnGoBack
+        onClick={ () => Router.push('/') }
+        data-cy="details_products_page_btn_back"
+      >
         <ArrowBack />
         Voltar
       </BtnGoBack>

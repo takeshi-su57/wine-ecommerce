@@ -31,23 +31,23 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <>
-      <BackContainer onClick={ () => setViewCart(false) } />
+        <BackContainer onClick={ () => setViewCart(false) } />
 
-      <Container>
-        <Header>
-          <span  onClick={ () => setViewCart(false) }>
-            <ArrowBack />
-            <span>WineBox ({ cart.length })</span>
-          </span>
-        </Header>
+        <Container data-cy="winebox-container">
+          <Header data-cy="winebox-header">
+            <span  onClick={ () => setViewCart(false) } data-cy="winebox-btn-back">
+              <ArrowBack />
+              <span>WineBox ({ cart.length })</span>
+            </span>
+          </Header>
 
-        <NoProducts>
-          <span>
-            Você ainda não escolheu seus produtos
-          </span>
-        </NoProducts>
-      </Container>
-    </>
+          <NoProducts data-cy="winebox-body">
+            <span>
+              Você ainda não escolheu seus produtos
+            </span>
+          </NoProducts>
+        </Container>
+      </>
     );
   };
 
@@ -56,17 +56,17 @@ const Cart = () => {
       <BackContainer onClick={ () => setViewCart(false) } />
 
       <Container>
-        <Header>
-          <span  onClick={ () => setViewCart(false) }>
+        <Header data-cy="winebox-header">
+          <span  onClick={ () => setViewCart(false) } data-cy="winebox-btn-back">
             <ArrowBack />
             <span>WineBox ({ cart.length })</span>
           </span>
         </Header>
 
-        <Body>
+        <Body data-cy="winebox-body">
           {
             cart.map((product: ProductCart, i: number) => (
-              <CardProduct key={ i }>
+              <CardProduct key={ i } data-cy={`winebox-card-product-${i}`}>
                 <div>
                   <Image
                     src={ product.image }
@@ -94,7 +94,7 @@ const Cart = () => {
           }
         </Body>
 
-        <Footer>
+        <Footer data-cy="winebox-footer">
           <div>
             <span>Total</span>
             <span>
