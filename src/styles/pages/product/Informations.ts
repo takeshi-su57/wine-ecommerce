@@ -120,6 +120,7 @@ const BtnContainer = styled.div`
   font-size: 24px;
   padding: 15px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
+  margin-bottom: 40px;
 
   div {
     span {

@@ -52,7 +52,7 @@ const Header = styled.div`
 const Body = styled.div`
   background-color: whitesmoke;
   box-sizing: border-box;
-  height: 78%;
+  height: 73%;
   overflow: auto;
   padding: 20px;
 `;
@@ -109,13 +109,14 @@ const CardProduct = styled.div`
 const Footer = styled.div`
   background-color: white;
   box-sizing: border-box;
-  height: 15%;
+  height: 20%;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   div {
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
