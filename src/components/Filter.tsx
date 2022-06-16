@@ -36,7 +36,7 @@ const Filter = () => {
       <h4>Por preço</h4>
 
       <FilterForm>
-        <label htmlFor="price-option-default">
+        <label htmlFor="price-option-default" data-cy="filter-radio-default">
           <input
             type="radio"
             name="filter"
@@ -48,7 +48,7 @@ const Filter = () => {
           Todos os preços
         </label>
 
-        <label htmlFor="price-option-one">
+        <label htmlFor="price-option-one" data-cy="filter-radio-1">
           <input
             type="radio"
             name="filter"
@@ -59,7 +59,7 @@ const Filter = () => {
           Até R$40
         </label>
 
-        <label htmlFor="price-option-two">
+        <label htmlFor="price-option-two" data-cy="filter-radio-2">
           <input
             type="radio"
             name="filter"
@@ -70,7 +70,7 @@ const Filter = () => {
           R$40 A R$60
         </label>
 
-        <label htmlFor="price-option-three">
+        <label htmlFor="price-option-three" data-cy="filter-radio-3">
           <input
             type="radio"
             name="filter"
@@ -81,7 +81,7 @@ const Filter = () => {
           R$100 A R$200
         </label>
 
-        <label htmlFor="price-option-four">
+        <label htmlFor="price-option-four" data-cy="filter-radio-4">
           <input
             type="radio"
             name="filter"
@@ -92,7 +92,7 @@ const Filter = () => {
           R$200 A R$500
         </label>
 
-        <label htmlFor="price-option-five">
+        <label htmlFor="price-option-five" data-cy="filter-radio-5">
           <input
             type="radio"
             name="filter"

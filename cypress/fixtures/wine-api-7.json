@@ -1,0 +1,26 @@
+{
+  "page": 1,
+  "totalPages": 1,
+  "itemsPerPage": 1,
+  "totalItems": 1,
+  "items": [
+    {
+      "id": 8,
+      "image": "/images/image-product.jpg",
+      "name": "Produto 9",
+      "price": 1400,
+      "discount": 50,
+      "priceMember": 600,
+      "priceNonMember": 700,
+      "type": "Tinto",
+      "classification": "Seco",
+      "size": "750 ml",
+      "rating": 4,
+      "avaliations": 292,
+      "country": "Portugal",
+      "region": "Dão",
+      "flag": "/images/flag-test.svg",
+      "sommelierComment": "Esse tinto traz em seu assemblage a Touriga Nacional, uma das uvas tintas portuguesas mais conhecidas no mundo do vinho. Nativa do Dão, região produtora desse vinho, essa variedade atinge a sua expressão máxima nesse terroir. O termo Colheita Selecionada estampado no rótulo, é uma referência a qualidade da safra 2015."
+    }
+  ]
+}

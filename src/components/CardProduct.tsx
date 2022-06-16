@@ -14,13 +14,24 @@ import Image from 'next/image';
 import { useContext, useState } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 
-const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, discount }: ProductCard) => {
+const CardProduct = (product: ProductCard) => {
   const { defineFocusProduct, saveInCart } = useContext(AppContext);
   const [status, setStatus] = useState('Adicionar');
 
+  const {
+    id,
+    index,
+    name,
+    image,
+    priceMember,
+    priceNonMember,
+    price,
+    discount,
+  } = product;
+
   const addInWineBox = () => {
     setStatus('Salvando...');
-    saveInCart({ name, image, id, priceMember, priceNonMember }, 1)
+    saveInCart({ id, name, image, priceMember, priceNonMember }, 1)
 
     setTimeout(() => {
       setStatus('Adicionado ao WineBox!');
@@ -38,7 +49,7 @@ const CardProduct = ({ name, image, id, priceMember, priceNonMember, price, disc
           defineFocusProduct(id);
           Router.push(`/product/${id}`);
         }}
-        data-cy={`home_page_card_product-${id}`}
+        data-cy={`home_page_card_product-${index}`}
       >
         <ProductImage>
           <Image

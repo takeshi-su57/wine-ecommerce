@@ -19,6 +19,7 @@ export interface Product {
 
 export interface ProductCard {
   id: number;
+  index: number;
   name: string;
   image: string;
   price: number;

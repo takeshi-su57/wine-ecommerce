@@ -50,7 +50,7 @@ const Home: NextPage = () => {
       <SectionCenter>
         <Filter />
         <SectionProducts>
-          <p>
+          <p data-cy="home_page_info_find_products">
             <strong>{ details.totalItems }</strong> produtos encontrados
           </p>
           <ProductsFlex>
@@ -60,6 +60,7 @@ const Home: NextPage = () => {
                   key={index}
                   name={product.name}
                   id={product.id}
+                  index={ index }
                   image={product.image}
                   discount={product.discount}
                   price={product.price}
