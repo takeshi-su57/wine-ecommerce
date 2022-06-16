@@ -10,15 +10,9 @@ export const getProducts = async (
   filter: string = '',
   search: string = ''
 ) => {
-  console.log(page);
-  console.log(limit);
-  console.log(filter);
-  console.log(search);
-  console.log(`/products?page=${ page }&limit=${ limit }&filter=${ filter }&name=${ search }`);
-  
-
   const { data } = await api.get(
     `/products?page=${ page }&limit=${ limit }&filter=${ filter }&name=${search}`
   );
+
   return data;
 };

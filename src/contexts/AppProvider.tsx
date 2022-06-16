@@ -73,16 +73,6 @@ export const AppProvider = ({ children }: propsProvider) => {
       itemsPerPage,
       totalItems,
     } = await getProducts(pageNum, 12, filter, search);
-
-    console.log(
-      {
-        items,
-        page,
-        totalPages,
-        itemsPerPage,
-        totalItems,
-      }
-    );
     
     setProducts(items);
 
