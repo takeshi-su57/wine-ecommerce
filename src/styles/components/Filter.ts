@@ -6,14 +6,9 @@ const SectionFilter = styled.section<Props>`
   width: 25%;
   transition: 0.2s;
 
-  h3 {
-    padding: 20px;
-  }
-
   h4 {
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 20px;
   }
 
   @media(max-width: 1150px) {
@@ -26,8 +21,13 @@ const SectionFilter = styled.section<Props>`
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
 
+    h3 {
+      padding: 20px;
+    }
+
     h4 {
       margin-top: 0;
+      margin-left: 20px;
     }
   }
 
@@ -58,11 +58,14 @@ const FilterForm = styled.form`
   flex-direction: column;
 
   label {
-    margin-left: 20px;
     margin-bottom: 30px;
     position: relative;
     cursor: pointer;
     padding-top: 2px;
+
+    @media(max-width: 1150px) {
+      margin-left: 20px;
+    }
 
     span {
       display: inline-block;
