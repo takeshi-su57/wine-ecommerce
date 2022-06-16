@@ -25,6 +25,11 @@ Teste técnico oferecido pela ![Wine](https://www.wine.com.br/) com o objetivo d
   cd wine-ecommerce
   ```
 
+  - Instale as dependências do projeto:
+  ```
+  npm install
+  ```
+
   - Inicie a aplicação em modo de desenvolvimento:
   ```
   npm run dev
