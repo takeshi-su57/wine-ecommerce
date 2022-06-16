@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
 import Router from 'next/router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 import {
   HeaderContainer,
@@ -9,10 +9,13 @@ import {
   Navbar,
   BtnsHeader,
   Logo,
+  SearchContainer,
+  SearchContent,
 } from 'styles/components/Header';
 
 const Header = () => {
   const { cartCount, setViewCart } = useContext(AppContext);
+  const [viewSearch, setViewSearch] = useState(false);
 
   return (
     <HeaderContainer>
@@ -40,7 +43,7 @@ const Header = () => {
         </Navbar>
 
         <BtnsHeader>
-          <button>
+          <button onClick={ () => setViewSearch(viewSearch ? false : true) }>
             <Image
               src="/icons/search_icon.svg"
               alt="Search Icon"
@@ -71,6 +74,23 @@ const Header = () => {
           </button>
         </BtnsHeader>
       </HeaderContent>
+
+      <SearchContainer viewContainer={ viewSearch }>
+        <SearchContent>
+          <input type="text" name="" id="search" placeholder="Pesquisar" />
+          <label htmlFor="search">
+            aperte enter para buscar
+          </label>
+          <button onClick={ () => Router.push('/search') }>
+            <Image
+              src="/icons/search.svg"
+              alt="Search icon"
+              width={ 25 }
+              height={ 25 }
+            />
+          </button>
+        </SearchContent>
+      </SearchContainer>
     </HeaderContainer>
   );
 };

@@ -33,3 +33,13 @@ export const loadByFilterForPage = async (filter: string, page: number) => {
   const { data } = await api.get(`/products?page=${page}&limit=12&filter=${filter}`);
   return data;
 };
+
+export const loadProductsBySearch = async (search: string) => {
+  const { data } = await api.get(`products?page=1&limit=12&name=${search}`);
+  return data;
+};
+
+export const loadBySearchForPage = async (search: string, page: number) => {
+  const { data } = await api.get(`/products?page=${page}&limit=12&name=${search}`);
+  return data;
+};
