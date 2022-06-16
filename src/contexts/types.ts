@@ -65,7 +65,7 @@ export const DEFAULT_VALUE = {
   loadMoreForPage: () => {},
   setViewCart: () => {},
   removeFromWineBox: () => {},
-  getByFilter: () => {},
+  getProductsFromApi: () => {},
   getInitInfo: () => {},
 };
 
@@ -83,7 +83,7 @@ export type AppContextType = {
   viewCart: boolean;
   setViewCart: Function;
   removeFromWineBox: Function;
-  getByFilter: Function;
+  getProductsFromApi: Function;
   details: {
     page: number;
     itemsPerPage: number;
