@@ -1,7 +1,7 @@
 describe('WineBox', () => {
   beforeEach('Mock api', () => {
-    cy.intercept('/products?page=1&limit=12', { fixture: 'wine-api-1.json' });
-    cy.intercept('/products?page=2&limit=12', { fixture: 'wine-api-2.json' });
+    cy.intercept('/products?page=1&limit=12&filter=&name=', { fixture: 'wine-api-1.json' });
+    cy.intercept('/products?page=2&limit=12&filter=&name=', { fixture: 'wine-api-2.json' });
   });
 
   describe.only('Accessing WineBox', () => {
