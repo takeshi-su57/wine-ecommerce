@@ -29,6 +29,10 @@ const InfoContainer = styled.section`
     text-align: center;
     width: 80%;
   }
+
+  @media(max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 const LinksNavigate = styled.div`
@@ -230,6 +234,10 @@ const ContainerPainelFloat = styled.div<Props>`
       padding: 15px 0;
       transition: 0.5s;
       width: 90%;
+
+      @media(max-width: 375px) {
+        font-size: 3vw;
+      }
     }
   }
 `;

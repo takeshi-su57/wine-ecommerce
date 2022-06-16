@@ -80,19 +80,21 @@ const DetailProduct = () => {
           <LinksNavigate>
             <a href="#">Vinhos</a> &gt; <a href="#">{ productFocus.country }</a> &gt; { productFocus.region }
           </LinksNavigate>
-          <ProductName>{ productFocus.name }</ProductName>
-            <ProductDetail>
-              <Image
-                src={ productFocus.flag }
-                alt="Flag"
-                width={ 20 }
-                height={ 20 }
-              />
-              <span>{ productFocus.country }</span>
-              <span>{ productFocus.type }</span>
-              <span>{ productFocus.classification }</span>
-              <span>{ productFocus.volume }</span>
-            </ProductDetail>
+          <ProductName>
+            { productFocus.name }
+          </ProductName>
+          <ProductDetail>
+            <Image
+              src={ productFocus.flag }
+              alt="Flag"
+              width={ 20 }
+              height={ 20 }
+            />
+            <span>{ productFocus.country }</span>
+            <span>{ productFocus.type }</span>
+            <span>{ productFocus.classification }</span>
+            <span>{ productFocus.volume }</span>
+          </ProductDetail>
         </InfoContainer>
 
         <ImageContainer>
