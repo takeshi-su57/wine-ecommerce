@@ -6,6 +6,16 @@ const SectionFilter = styled.section<Props>`
   width: 25%;
   transition: 0.2s;
 
+  h3 {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      visibility: hidden;
+      transform: ${(props) => props.viewContainer ? 'rotate(180deg)' : 'none'};
+    }
+  }
+
   h4 {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -50,6 +60,13 @@ const SectionFilter = styled.section<Props>`
   @media(max-width: 600px) {
     height: ${(props) => props.viewContainer ? '400px' : '60px'};
     overflow: hidden;
+
+    h3 {
+      span {
+        transition: 0.3s;
+        visibility: visible;
+      }
+    }
   }
 `;
 

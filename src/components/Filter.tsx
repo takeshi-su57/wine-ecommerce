@@ -1,5 +1,6 @@
 import { AppContext } from 'contexts/AppProvider';
 import { useMediaQuery } from 'hooks/useMediaQuery';
+import Image from 'next/image';
 import { useContext, useState } from 'react';
 import { FilterForm, SectionFilter } from 'styles/components/Filter';
 
@@ -31,6 +32,12 @@ const Filter = () => {
     <SectionFilter viewContainer={ viewFilter ? true : false }>
       <h3 onClick={ inMobile ? viewFilterToggle : undefined }>
         Refine sua busca
+        <Image
+          src="/icons/arrow.svg"
+          alt="Product Preview"
+          width={20}
+          height={20}
+        />
       </h3>
 
       <h4>Por preço</h4>
