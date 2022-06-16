@@ -17,6 +17,7 @@ const SectionCenter = styled.section`
 const SectionProducts = styled.section`
   float: right;
   width: 75%;
+  padding-top: 20px;
 
   @media(max-width: 1150px) {
     float: none;
@@ -68,6 +69,20 @@ const SectionLoading = styled.section`
   justify-content: center;
   align-items: center;
   min-height: 70vh;
+
+  @media(max-width: 1150px) {
+    min-height: auto;
+  }
+`;
+
+const SectionError = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #b3b3b3;
+  font-size: 30px;
+  padding-top: 20px;
 `;
 
 export {
@@ -76,5 +91,6 @@ export {
   SectionProducts,
   ProductsFlex,
   SectionFlexProduct,
-  SectionLoading
+  SectionLoading,
+  SectionError
 };

@@ -75,33 +75,39 @@ const CardProduct = styled.div`
 
   div:nth-child(2) {
     box-sizing: border-box;
-    width: 65%;
+    width: 60%;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
 
     h3 {
       font-size: 16px;
     }
 
-    h4 {
-      color: gray;
-    }
+    div {
+      margin-top: 20px;
+      padding: 0;
 
-    h2 {
-      color: #b6116e;
+      span:nth-child(1) {
+        color: gray;
+      }
+
+      span:nth-child(2) {
+        color: #b6116e;
+        font-size: 20px;
+        font-weight: 600;
+      }
     }
 
     button {
       background-color: transparent;
+      display: flex;
       border: none;
       cursor: pointer;
       font-size: 16px;
       position: absolute;
-      top: 0;
-      right: 0;
-      margin: 10px;
+      top: 10px;
+      right: 10px;
     }
   }
 `;

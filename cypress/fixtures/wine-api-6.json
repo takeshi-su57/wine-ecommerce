@@ -1,0 +1,44 @@
+{
+  "page": 1,
+  "totalPages": 1,
+  "itemsPerPage": 3,
+  "totalItems": 3,
+  "items": [
+    {
+      "id": 3,
+      "image": "/images/image-product.jpg",
+      "name": "Produto 4",
+      "price": 500,
+      "discount": 50,
+      "priceMember": 200,
+      "priceNonMember": 250,
+      "type": "Tinto",
+      "classification": "Seco",
+      "volume": "750 ml",
+      "Rating": 4,
+      "rating": 4,
+      "country": "Chile",
+      "region": "Valle Central",
+      "flag": "/images/flag-test.svg",
+      "sommelierComment": "Jovem e com um estilo que agrada com facilidade, esse versátil rótulo pode ser degustado sozinho ou harmonizado com receitas do dia a dia. A Viña Canepa, fundada no Chile por imigrantes italianos, iniciou a produção da linha Novísimo nos anos 80."
+    },
+    {
+      "id": 7,
+      "image": "/images/image-product.jpg",
+      "name": "Produto 8",
+      "price": 500,
+      "discount": 50,
+      "priceMember": 200,
+      "priceNonMember": 250,
+      "type": "Tinto",
+      "classification": "Seco",
+      "volume": "750 ml",
+      "Rating": 4,
+      "rating": 4,
+      "country": "Chile",
+      "region": "Valle Central",
+      "flag": "/images/flag-test.svg",
+      "sommelierComment": "Jovem e com um estilo que agrada com facilidade, esse versátil rótulo pode ser degustado sozinho ou harmonizado com receitas do dia a dia. A Viña Canepa, fundada no Chile por imigrantes italianos, iniciou a produção da linha Novísimo nos anos 80."
+    }
+  ]
+}

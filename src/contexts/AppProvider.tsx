@@ -1,6 +1,19 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProductsInit, loadMoreProducts, loadMoreProductsForPage } from 'services/apiWine';
-import { AppContextType, DEFAULT_VALUE, Product, ProductCart, propsProvider } from './types';
+import {
+  DEFAULT_VALUE,
+  AppContextType,
+  Product,
+  ProductCart,
+  propsProvider,
+} from './types';
+import {
+  getProductsInit,
+  loadByFilterForPage,
+  loadMoreProducts,
+  loadMoreProductsByFilter,
+  loadMoreProductsForPage,
+  loadProductsByFilter,
+} from 'services/apiWine';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
 
@@ -10,11 +23,24 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [productFocus, setProdFocus] = useState(DEFAULT_VALUE.productFocus);
   const [cartCount, setCartCount] = useState(0);
   const [limit, setLimit] = useState(12);
+  const [loadingData, setLoadingData] = useState(false);
   const [loading, setLoading] = useState(true);
   const [viewCart, setViewCart] = useState(false);
+  const [filter, setFilter] = useState('');
 
   const getInitInfo = async () => {
-    const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
+    setFilter('');
+    setLoading(true);
+    setLoadingData(true);
+
+    const {
+      items,
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+    } = await getProductsInit();
+    
     setProducts(items);
 
     let arrayPages = [];
@@ -23,8 +49,15 @@ export const AppProvider = ({ children }: propsProvider) => {
       arrayPages.push(index);
     }
 
-    setDetails({ page, totalPages, itemsPerPage, totalItems, pagination: arrayPages });
+    setDetails({
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+      pagination: arrayPages,
+    });
     setLoading(false);
+    setLoadingData(false);
   };
 
   const defineFocusProduct = (id: number) => {
@@ -61,6 +94,8 @@ export const AppProvider = ({ children }: propsProvider) => {
       }));
       setCartCount(1);
     };
+
+    return true;
   };
 
   const removeFromWineBox = (Items: ProductCart[], totalPrice: number) => {
@@ -75,7 +110,13 @@ export const AppProvider = ({ children }: propsProvider) => {
   const loadMore = async () => {
     setLoading(true);
     setLimit(limit + 12);
-    const data = await loadMoreProducts(limit + 12);
+    let data;
+
+    if (filter) {
+      data = await loadMoreProductsByFilter((limit + 12), filter);
+    } else {
+      data = await loadMoreProducts(limit + 12);
+    }
     setProducts(data.items);
     setLoading(false);
   };
@@ -83,11 +124,47 @@ export const AppProvider = ({ children }: propsProvider) => {
   const loadMoreForPage = async (pageNum: number) => {
     setLoading(true);
     setLimit(12);
-    const { items, page } = await loadMoreProductsForPage(pageNum);
+    let data;
+
+    if (filter) {
+      data = await loadByFilterForPage(filter, pageNum);
+    } else {
+      data = await loadMoreProductsForPage(pageNum);
+    }
+    const { items, page } = data;
     setProducts(items);
     setDetails({ ...details, page });
     setLoading(false);
   };
+
+  const getByFilter = async (filter: string) => {
+    setLoadingData(true);
+    setFilter(filter);
+    setLimit(12);
+    const {
+      items,
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+    } = await loadProductsByFilter(filter);
+    setProducts(items);
+
+    let arrayPages = [];
+
+    for (let index = 1; index <= totalPages; index++) {
+      arrayPages.push(index);
+    }
+
+    setDetails({
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+      pagination: arrayPages,
+    });
+    setLoadingData(false);
+  }
 
   useEffect(() => {
     getInitInfo();
@@ -113,6 +190,7 @@ export const AppProvider = ({ children }: propsProvider) => {
   
   return (
     <AppContext.Provider value={{
+      getInitInfo,
       products,
       details,
       productFocus,
@@ -121,7 +199,9 @@ export const AppProvider = ({ children }: propsProvider) => {
       saveInCart,
       loadMore,
       loadMoreForPage,
+      getByFilter,
       loading,
+      loadingData,
       viewCart,
       setViewCart,
       removeFromWineBox

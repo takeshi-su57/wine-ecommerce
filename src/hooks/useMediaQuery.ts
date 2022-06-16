@@ -16,4 +16,4 @@ export function useMediaQuery(query: string) {
   }, [matches, query]);
 
   return matches;
-}
+};

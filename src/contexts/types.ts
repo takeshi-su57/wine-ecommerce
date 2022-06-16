@@ -15,17 +15,26 @@ export interface Product {
   region: string;
   flag: string;
   sommelierComment: string;
-}
+};
 
 export interface ProductCard {
   id: number;
+  index: number;
   name: string;
   image: string;
   price: number;
   discount: number;
   priceMember: number;
   priceNonMember: number;
-}
+};
+
+export interface ProductWineBox {
+  id: number;
+  name: string;
+  image: string;
+  priceMember: number;
+  priceNonMember: number;
+};
 
 export interface ProductCart {
   id: number;
@@ -34,7 +43,7 @@ export interface ProductCart {
   priceMember: number;
   priceNonMember: number;
   quantity: number;
-}
+};
 
 export const DEFAULT_VALUE = {
   products: [],
@@ -49,15 +58,19 @@ export const DEFAULT_VALUE = {
   cartCount: 0,
   loading: true,
   viewCart: false,
+  loadingData: false,
   defineFocusProduct: () => {},
   saveInCart: () => {},
   loadMore: () => {},
   loadMoreForPage: () => {},
   setViewCart: () => {},
   removeFromWineBox: () => {},
+  getByFilter: () => {},
+  getInitInfo: () => {},
 };
 
 export type AppContextType = {
+  getInitInfo: Function;
   products: Product[];
   productFocus: Product | undefined;
   defineFocusProduct: Function;
@@ -66,9 +79,11 @@ export type AppContextType = {
   loadMore: Function;
   loadMoreForPage: Function;
   loading: boolean;
+  loadingData: boolean;
   viewCart: boolean;
   setViewCart: Function;
   removeFromWineBox: Function;
+  getByFilter: Function;
   details: {
     page: number;
     itemsPerPage: number;
@@ -83,5 +98,7 @@ export type propsProvider = {
 };
 
 export interface Props {
-  actualPage: any;
-}
+  actualPage?: any;
+  progress?: any;
+  viewContainer?: boolean;
+};

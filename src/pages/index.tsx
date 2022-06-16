@@ -1,33 +1,39 @@
 import type { NextPage } from 'next';
-import Header from 'components/layout/Header';
-import { Main, ProductsFlex, SectionCenter, SectionLoading, SectionProducts } from 'styles/Containers';
+import Header from 'components/Header';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
-import { LoadMore, ContainerPagesBtns, BtnsPages } from 'styles/pages/store/LoadMoreBtn';
 import Loading from 'components/Loading';
 import WineBox from 'components/WineBox';
 import { useMediaQuery } from 'hooks/useMediaQuery';
+import {
+  LoadMore,
+  ContainerPagesBtns,
+  BtnsPages,
+} from 'styles/components/LoadMoreBtn';
+import {
+  Main,
+  ProductsFlex,
+  SectionCenter,
+  SectionError,
+  SectionLoading,
+  SectionProducts,
+} from 'styles/Containers';
 
 const Home: NextPage = () => {
-  const { details, products, loadMore, loading, viewCart, loadMoreForPage } = useContext(AppContext);
+  const {
+    details,
+    products,
+    loadMore,
+    loading,
+    viewCart,
+    loadMoreForPage,
+    loadingData,
+  } = useContext(AppContext);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
-  if (products.length === 0) {
-    return (
-      <Main>
-      <Header />
-      <SectionCenter>
-        <SectionLoading>
-          <Loading />
-        </SectionLoading>
-      </SectionCenter>
-    </Main>
-    )
-  }
-
-  if (loading && !inMobile) {
+  if (loading && !inMobile || loadingData) {
     return (
       <Main>
       <Header />
@@ -38,17 +44,33 @@ const Home: NextPage = () => {
         </SectionLoading>
       </SectionCenter>
     </Main>
-    )
-  }
+    );
+  };
 
+  /* Caso a requisição não retorne nenhum produto */
+  if (products.length === 0) {
+    return (
+      <Main>
+        <Header />
+        <SectionCenter>
+          <Filter />
+          <SectionError>
+            <h1>Nenhum produto foi encontrado!</h1>
+          </SectionError>
+        </SectionCenter>
+      </Main>
+    );
+  };
+
+  /* Caso a requisição retorne os dados esperados */
   return (
-    <Main style={{ overflow: 'hidden' }}>
+    <Main>
       <Header />
       <SectionCenter>
         <Filter />
         <SectionProducts>
-          <p>
-            <strong>{details.totalItems}</strong> produtos encontrados
+          <p data-cy="home_page_info_find_products">
+            <strong>{ details.totalItems }</strong> produtos encontrados
           </p>
           <ProductsFlex>
             {
@@ -57,6 +79,7 @@ const Home: NextPage = () => {
                   key={index}
                   name={product.name}
                   id={product.id}
+                  index={ index }
                   image={product.image}
                   discount={product.discount}
                   price={product.price}
@@ -70,7 +93,10 @@ const Home: NextPage = () => {
           {
             inMobile ? (
               <div>
-                <LoadMore onClick={ () => loadMore() } disabled={ products.length === details.totalItems }>
+                <LoadMore
+                  onClick={ () => loadMore() }
+                  disabled={ products.length === details.totalItems }
+                >
                   { loading ? <Loading /> : <h3>Mostrar mais</h3> }
                 </LoadMore>
               </div>
@@ -78,7 +104,9 @@ const Home: NextPage = () => {
               <ContainerPagesBtns>
                 <button
                   onClick={ () => loadMoreForPage(details.page - 1) }
-                  disabled={ details.page === 1 }>
+                  disabled={ details.page === 1 }
+                  data-cy="home_page_navigate_btn-previous"
+                >
                   &lt;&lt; Anterior
                 </button>
 
@@ -88,6 +116,7 @@ const Home: NextPage = () => {
                       key={ index }
                       onClick={ () => loadMoreForPage(page) }
                       actualPage={ page === details.page ? true : false }
+                      data-cy={`home_page_navigate_btn-${index}`}
                     >
                       { page }
                     </BtnsPages>
@@ -97,6 +126,7 @@ const Home: NextPage = () => {
                 <button
                   onClick={ () => loadMoreForPage(details.page + 1) }
                   disabled={ (details.page + 1) > details.totalPages }
+                  data-cy="home_page_navigate_btn-next"
                 >
                   Próximo &gt;&gt;
                 </button>

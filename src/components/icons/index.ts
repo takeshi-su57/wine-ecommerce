@@ -1,7 +1,7 @@
 import ArrowBack from './ArrowBackIcon';
-import Close from './CloseIcon';
+import Delete from './DeleteIcon';
 
 export {
   ArrowBack,
-  Close,
+  Delete,
 };

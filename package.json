@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "cypress run"
+    "test": "cypress run",
+    "test:open": "cypress open"
   },
   "dependencies": {
     "axios": "^0.27.2",

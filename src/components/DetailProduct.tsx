@@ -9,6 +9,7 @@ import {
   BtnGoBack,
   ContainerPainelFloat,
   Description,
+  ErrorLoadProduct,
   ImageContainer,
   InfoContainer,
   LinksNavigate,
@@ -16,14 +17,29 @@ import {
   ProductDetail,
   ProductName,
   ProductPrice
-} from 'styles/pages/product/Informations';
+} from 'styles/components/DetailProduct';
 import { ArrowBack } from './icons';
 import Router from 'next/router';
+import { ProductWineBox } from 'contexts/types';
 
-const ProductInformation = () => {
+const DetailProduct = () => {
   const { productFocus, saveInCart } = useContext(AppContext);
   const [count, setCount] = useState(1);
   const inMobile = useMediaQuery('(max-width: 900px)');
+  const [status, setStatus] = useState('Adicionar');
+
+  const addInWineBox = (product: ProductWineBox) => {
+    setStatus('Salvando...');
+    saveInCart(product, count)
+
+    setTimeout(() => {
+      setStatus('Adicionado ao WineBox!');
+    }, 2000);
+
+    setTimeout(() => {
+      setStatus('Adicionar');
+    }, 4000);
+  };
 
   const increment = () => {
     setCount(count + 1);
@@ -35,18 +51,30 @@ const ProductInformation = () => {
   
   if (!productFocus) {
     return (
-      <h1>Erro inesperado!</h1>
+      <>
+        <BtnGoBack
+          onClick={ () => Router.push('/') }
+          data-cy="details_products_page_btn_back"
+        >
+          <ArrowBack />
+          Voltar
+        </BtnGoBack>
+        <ErrorLoadProduct>
+          Erro ao carregar o produto!
+        </ErrorLoadProduct>
+      </>
     );
   };
   
   const { name, image, id, priceMember, priceNonMember  } = productFocus;
 
+  /* Versão para dispositivos com no máximo 900px de largura */
   if (inMobile) {
     return (
       <SectionFlexProduct>
         <InfoContainer>
           <LinksNavigate>
-            <a href="">Vinhos</a> &gt; <a href="">{ productFocus.country }</a> &gt; { productFocus.region }
+            <a href="#">Vinhos</a> &gt; <a href="#">{ productFocus.country }</a> &gt; { productFocus.region }
           </LinksNavigate>
           <ProductName>{ productFocus.name }</ProductName>
             <ProductDetail>
@@ -79,7 +107,7 @@ const ProductInformation = () => {
           </ProductComment>
         </Description>
 
-        <ContainerPainelFloat>
+        <ContainerPainelFloat progress={ status !== 'Adicionar' }>
           <div>
             <span>{ `${productFocus.discount}% OFF` }</span>
             <span>{ `R$ ${productFocus.price.toFixed(2).replace(/\./, ',')}` }</span>
@@ -93,18 +121,22 @@ const ProductInformation = () => {
           </div>
 
           <div>
-            <button onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, count) }>
-              Adicionar
+            <button onClick={ () => addInWineBox({ name, image, id, priceMember, priceNonMember }) }>
+              { status }
             </button>
           </div>
         </ContainerPainelFloat>
       </SectionFlexProduct>
     );
   };
-    
+  
+  /* Versão para dispositivos com no mínimo 900px de largura */
   return (
     <>
-      <BtnGoBack onClick={ () => Router.push('/') }>
+      <BtnGoBack
+        onClick={ () => Router.push('/') }
+        data-cy="details_products_page_btn_back"
+      >
         <ArrowBack />
         Voltar
       </BtnGoBack>
@@ -120,7 +152,9 @@ const ProductInformation = () => {
           <LinksNavigate>
             <a href="">Vinhos</a> &gt; <a href="">{ productFocus.country }</a> &gt; { productFocus.region }
           </LinksNavigate>
-          <ProductName>{ productFocus.name }</ProductName>
+          <ProductName data-cy="details_products_name_product">
+            { productFocus.name }
+          </ProductName>
           <ProductDetail>
             <Image
               src={ productFocus.flag }
@@ -149,7 +183,7 @@ const ProductInformation = () => {
           <ProductComment>
             { productFocus.sommelierComment }
           </ProductComment>
-          <BtnContainer>
+          <BtnContainer progress={ status !== 'Adicionar' }>
             <div>
               <button
                 disabled={ count === 1 ? true : false }
@@ -160,8 +194,12 @@ const ProductInformation = () => {
               <span>{ count }</span>
               <button onClick={ increment }>+</button>
             </div>
-            <button onClick={ () => saveInCart({ name, image, id, priceMember, priceNonMember }, count) }>
-              Adicionar
+            <button
+              onClick={ () => addInWineBox(
+                { name, image, id, priceMember, priceNonMember }
+              )}
+            >
+              { status }
             </button>
           </BtnContainer>
         </InfoContainer>
@@ -170,4 +208,4 @@ const ProductInformation = () => {
   );
 };
 
-export default ProductInformation;
+export default DetailProduct;

@@ -1,9 +1,15 @@
-import { HeaderContainer, HeaderContent, Navbar, BtnsHeader, Logo } from 'styles/Header';
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
 import Router from 'next/router';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
+import {
+  HeaderContainer,
+  HeaderContent,
+  Navbar,
+  BtnsHeader,
+  Logo,
+} from 'styles/components/Header';
 
 const Header = () => {
   const { cartCount, setViewCart } = useContext(AppContext);
@@ -15,7 +21,7 @@ const Header = () => {
           <MenuMobileBtn />
           <Image
             src="/images/wine_logo.svg"
-            alt="Landscape picture"
+            alt="Wine Logo"
             width={ 100 }
             height={ 80 }
             onClick={ () => Router.push('/') }
@@ -50,16 +56,16 @@ const Header = () => {
               height={ 50 }
             />
           </button>
-          <button onClick={ () => setViewCart(true) }>
+          <button onClick={ () => setViewCart(true) } data-cy="winebox-btn">
             <div>
               <Image
                 src="/images/cart_icon.png"
-                alt="Cart Icon"
+                alt="WineBox Icon"
                 width={ 40 }
                 height={ 50 }
               />
             </div>
-            <div>
+            <div data-cy="winebox-btn-count">
               { cartCount }
             </div>
           </button>
