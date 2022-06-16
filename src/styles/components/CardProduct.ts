@@ -98,7 +98,7 @@ const BtnAddProductCart = styled.button<Props>`
   transition: 0.5s;
 
   @media(max-width: 600px) {
-    font-size: 12px;
+    font-size: 2.7vw;
   }
 `;
 
