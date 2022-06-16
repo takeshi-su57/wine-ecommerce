@@ -195,7 +195,9 @@ const DetailProduct = () => {
               <button onClick={ increment }>+</button>
             </div>
             <button
-              onClick={ () => addInWineBox({ name, image, id, priceMember, priceNonMember })}
+              onClick={ () => addInWineBox(
+                { name, image, id, priceMember, priceNonMember }
+              )}
             >
               { status }
             </button>

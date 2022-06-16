@@ -2,8 +2,16 @@ import { AppContext } from 'contexts/AppProvider';
 import { ProductCart } from 'contexts/types';
 import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
-import { CardProduct, BackContainer, Body, Container, Footer, Header, NoProducts } from 'styles/components/WineBox';
-import { ArrowBack, Close } from './icons';
+import { ArrowBack, Delete } from './icons';
+import {
+  CardProduct,
+  BackContainer,
+  Body,
+  Container,
+  Footer,
+  Header,
+  NoProducts,
+} from 'styles/components/WineBox';
 
 const Cart = () => {
   const { setViewCart, removeFromWineBox } = useContext(AppContext);
@@ -49,7 +57,10 @@ const Cart = () => {
 
         <Container data-cy="winebox-container">
           <Header data-cy="winebox-header">
-            <span  onClick={ () => setViewCart(false) } data-cy="winebox-btn-back">
+            <span 
+              onClick={ () => setViewCart(false) }
+              data-cy="winebox-btn-back"
+            >
               <ArrowBack />
               <span>WineBox ({ cart.length })</span>
             </span>
@@ -71,7 +82,10 @@ const Cart = () => {
 
       <Container>
         <Header data-cy="winebox-header">
-          <span  onClick={ () => setViewCart(false) } data-cy="winebox-btn-back">
+          <span 
+            onClick={ () => setViewCart(false) }
+            data-cy="winebox-btn-back"
+          >
             <ArrowBack />
             <span>WineBox ({ cart.length })</span>
           </span>
@@ -85,18 +99,32 @@ const Cart = () => {
                   <Image
                     src={ product.image }
                     alt="Preview product"
-                    width="100%" height="100%" layout="responsive" objectFit="contain"
+                    width="100%"
+                    height="100%"
+                    layout="responsive"
+                    objectFit="contain"
                   />
                 </div> 
                 <div>
-                  <h3 data-cy={`winebox-card-product-name-${i}`}>{ product.name }</h3>
+                  <h3 data-cy={`winebox-card-product-name-${i}`}>
+                    { product.name }
+                  </h3>
                   <div>
                     <span data-cy={`winebox-card-product-price-mult-${i}`}>
-                      { `R$ ${product.priceMember.toFixed(2).replace(/\./, ',')} x  ${ product.quantity }` }
+                      { 
+                        `R$ ${
+                          product.priceMember.toFixed(2).replace(/\./, ',')
+                        } x  ${
+                          product.quantity
+                        }` 
+                      }
                     </span>
                     <span data-cy={`winebox-card-product-price-${i}`}>
                       { 
-                        `R$ ${(product.priceMember*product.quantity).toFixed(2).replace(/\./, ',')}` 
+                        `R$ ${
+                          (product.priceMember*product.quantity)
+                            .toFixed(2).replace(/\./, ',')
+                        }`
                       }
                     </span>
                   </div>
@@ -107,7 +135,7 @@ const Cart = () => {
                     } }
                     data-cy={`winebox-card-product-btn-delete-${i}`}
                   >
-                    <Close />
+                    <Delete />
                   </button>
                 </div>
               </CardProduct>

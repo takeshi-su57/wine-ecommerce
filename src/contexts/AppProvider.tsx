@@ -1,6 +1,19 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProductsInit, loadByFilterForPage, loadMoreProducts, loadMoreProductsByFilter, loadMoreProductsForPage, loadProductsByFilter } from 'services/apiWine';
-import { AppContextType, DEFAULT_VALUE, Product, ProductCart, propsProvider } from './types';
+import {
+  DEFAULT_VALUE,
+  AppContextType,
+  Product,
+  ProductCart,
+  propsProvider,
+} from './types';
+import {
+  getProductsInit,
+  loadByFilterForPage,
+  loadMoreProducts,
+  loadMoreProductsByFilter,
+  loadMoreProductsForPage,
+  loadProductsByFilter,
+} from 'services/apiWine';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
 
@@ -20,7 +33,13 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLoading(true);
     setLoadingData(true);
 
-    const { items, page, totalPages, itemsPerPage, totalItems } = await getProductsInit();
+    const {
+      items,
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+    } = await getProductsInit();
     
     setProducts(items);
 
@@ -30,7 +49,13 @@ export const AppProvider = ({ children }: propsProvider) => {
       arrayPages.push(index);
     }
 
-    setDetails({ page, totalPages, itemsPerPage, totalItems, pagination: arrayPages });
+    setDetails({
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+      pagination: arrayPages,
+    });
     setLoading(false);
     setLoadingData(false);
   };
@@ -116,7 +141,13 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLoadingData(true);
     setFilter(filter);
     setLimit(12);
-    const { items, page, totalPages, itemsPerPage, totalItems } = await loadProductsByFilter(filter);
+    const {
+      items,
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+    } = await loadProductsByFilter(filter);
     setProducts(items);
 
     let arrayPages = [];
@@ -125,7 +156,13 @@ export const AppProvider = ({ children }: propsProvider) => {
       arrayPages.push(index);
     }
 
-    setDetails({ page, totalPages, itemsPerPage, totalItems, pagination: arrayPages });
+    setDetails({
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+      pagination: arrayPages,
+    });
     setLoadingData(false);
   }
 

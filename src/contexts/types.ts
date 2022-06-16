@@ -15,7 +15,7 @@ export interface Product {
   region: string;
   flag: string;
   sommelierComment: string;
-}
+};
 
 export interface ProductCard {
   id: number;
@@ -26,7 +26,7 @@ export interface ProductCard {
   discount: number;
   priceMember: number;
   priceNonMember: number;
-}
+};
 
 export interface ProductWineBox {
   id: number;
@@ -34,7 +34,7 @@ export interface ProductWineBox {
   image: string;
   priceMember: number;
   priceNonMember: number;
-}
+};
 
 export interface ProductCart {
   id: number;
@@ -43,7 +43,7 @@ export interface ProductCart {
   priceMember: number;
   priceNonMember: number;
   quantity: number;
-}
+};
 
 export const DEFAULT_VALUE = {
   products: [],
@@ -101,4 +101,4 @@ export interface Props {
   actualPage?: any;
   progress?: any;
   viewContainer?: boolean;
-}
+};

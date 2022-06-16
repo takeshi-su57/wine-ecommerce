@@ -1,17 +1,36 @@
 import type { NextPage } from 'next';
 import Header from 'components/Header';
-import { Main, ProductsFlex, SectionCenter, SectionError, SectionLoading, SectionProducts } from 'styles/Containers';
 import Filter from 'components/Filter';
 import CardProduct from 'components/CardProduct';
 import { useContext } from 'react';
 import { AppContext } from 'contexts/AppProvider';
-import { LoadMore, ContainerPagesBtns, BtnsPages } from 'styles/components/LoadMoreBtn';
 import Loading from 'components/Loading';
 import WineBox from 'components/WineBox';
 import { useMediaQuery } from 'hooks/useMediaQuery';
+import {
+  LoadMore,
+  ContainerPagesBtns,
+  BtnsPages,
+} from 'styles/components/LoadMoreBtn';
+import {
+  Main,
+  ProductsFlex,
+  SectionCenter,
+  SectionError,
+  SectionLoading,
+  SectionProducts,
+} from 'styles/Containers';
 
 const Home: NextPage = () => {
-  const { details, products, loadMore, loading, viewCart, loadMoreForPage, loadingData } = useContext(AppContext);
+  const {
+    details,
+    products,
+    loadMore,
+    loading,
+    viewCart,
+    loadMoreForPage,
+    loadingData,
+  } = useContext(AppContext);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
   if (loading && !inMobile || loadingData) {
@@ -74,7 +93,10 @@ const Home: NextPage = () => {
           {
             inMobile ? (
               <div>
-                <LoadMore onClick={ () => loadMore() } disabled={ products.length === details.totalItems }>
+                <LoadMore
+                  onClick={ () => loadMore() }
+                  disabled={ products.length === details.totalItems }
+                >
                   { loading ? <Loading /> : <h3>Mostrar mais</h3> }
                 </LoadMore>
               </div>
