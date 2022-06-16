@@ -8,6 +8,7 @@ import Loading from 'components/Loading';
 import WineBox from 'components/WineBox';
 import { useMediaQuery } from 'hooks/useMediaQuery';
 import {
+  InfoData,
   Main,
   ProductsFlex,
   SectionCenter,
@@ -25,6 +26,8 @@ const Home: NextPage = () => {
     loading,
     viewCart,
     loadingData,
+    search,
+    getInitInfo
   } = useContext(AppContext);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
@@ -64,9 +67,16 @@ const Home: NextPage = () => {
       <SectionCenter>
         <Filter />
         <SectionProducts>
-          <p data-cy="home_page_info_find_products">
-            <strong>{ details.totalItems }</strong> produtos encontrados
-          </p>
+          <InfoData inSearch={ search ? true : false }>
+            <p data-cy="home_page_info_find_products">
+              <strong>{ details.totalItems }</strong> produtos encontrados
+              <span> para <strong>{`"${ search }"`}</strong></span>
+            </p>
+            <button onClick={ () => getInitInfo() }>
+              Cancelar pesquisa
+            </button>
+          </InfoData>
+          
           <ProductsFlex>
             {
               products.map((product, index) => (

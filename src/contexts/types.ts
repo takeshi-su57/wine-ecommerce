@@ -59,13 +59,14 @@ export const DEFAULT_VALUE = {
   loading: true,
   viewCart: false,
   loadingData: false,
+  search: '',
   defineFocusProduct: () => {},
   saveInCart: () => {},
   loadMore: () => {},
   loadMoreForPage: () => {},
   setViewCart: () => {},
   removeFromWineBox: () => {},
-  getByFilter: () => {},
+  getProductsFromApi: () => {},
   getInitInfo: () => {},
 };
 
@@ -80,10 +81,11 @@ export type AppContextType = {
   loadMoreForPage: Function;
   loading: boolean;
   loadingData: boolean;
+  search: string;
   viewCart: boolean;
   setViewCart: Function;
   removeFromWineBox: Function;
-  getByFilter: Function;
+  getProductsFromApi: Function;
   details: {
     page: number;
     itemsPerPage: number;
@@ -101,4 +103,5 @@ export interface Props {
   actualPage?: any;
   progress?: any;
   viewContainer?: boolean;
+  inSearch?: boolean;
 };

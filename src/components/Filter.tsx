@@ -5,19 +5,19 @@ import { useContext, useState } from 'react';
 import { FilterForm, SectionFilter } from 'styles/components/Filter';
 
 const Filter = () => {
-  const { getByFilter, getInitInfo } = useContext(AppContext);
+  const { getProductsFromApi, search } = useContext(AppContext);
   const [allProducts, setNoFilter] = useState(true);
   const [viewFilter, setView] = useState(false);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
   const getFilter = async (filter: string) => {
     setNoFilter(false);
-    getByFilter(filter);
+    getProductsFromApi(1, filter, search);
   };
 
-  const getNoFilter = async (filter: string) => {
+  const getNoFilter = async () => {
     setNoFilter(true);
-    getInitInfo();
+    getProductsFromApi(1, '', search);
   };
 
   const viewFilterToggle = () => {
@@ -48,7 +48,7 @@ const Filter = () => {
             type="radio"
             name="filter"
             id="price-option-default"
-            onChange={ () => getNoFilter('0-40')}
+            onChange={ () => getNoFilter()}
             checked={ allProducts }
           />
           <span></span>

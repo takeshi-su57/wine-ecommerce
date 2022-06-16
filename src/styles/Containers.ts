@@ -1,3 +1,4 @@
+import { Props } from 'contexts/types';
 import styled from 'styled-components';
 
 const Main = styled.main`
@@ -38,6 +39,38 @@ const SectionProducts = styled.section`
 
   @media(max-width: 630px) {
     width: 100%;
+  }
+`;
+
+const InfoData = styled.div<Props>`
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    visibility: ${Props => Props.inSearch ? 'visible' : 'hidden'};
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    visibility: ${Props => Props.inSearch ? 'visible' : 'hidden'};
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media(max-width: 920px) { 
+    flex-direction: column;
+
+    button {
+      align-self: flex-start;
+      margin-top: 10px;
+      padding: 0;
+    }
   }
 `;
 
@@ -89,6 +122,7 @@ export {
   SectionProducts,
   ProductsFlex,
   SectionFlexProduct,
+  InfoData,
   SectionLoading,
   SectionError
 };

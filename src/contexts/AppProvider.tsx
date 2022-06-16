@@ -6,14 +6,7 @@ import {
   ProductCart,
   propsProvider,
 } from './types';
-import {
-  getProductsInit,
-  loadByFilterForPage,
-  loadMoreProducts,
-  loadMoreProductsByFilter,
-  loadMoreProductsForPage,
-  loadProductsByFilter,
-} from 'services/apiWine';
+import { getProducts } from 'services/apiWine';
 
 export const AppContext = createContext<AppContextType>(DEFAULT_VALUE);
 
@@ -27,9 +20,11 @@ export const AppProvider = ({ children }: propsProvider) => {
   const [loading, setLoading] = useState(true);
   const [viewCart, setViewCart] = useState(false);
   const [filter, setFilter] = useState('');
+  const [search, setSearch] = useState('');
 
   const getInitInfo = async () => {
     setFilter('');
+    setSearch('');
     setLoading(true);
     setLoadingData(true);
 
@@ -39,7 +34,45 @@ export const AppProvider = ({ children }: propsProvider) => {
       totalPages,
       itemsPerPage,
       totalItems,
-    } = await getProductsInit();
+    } = await getProducts();
+    
+    setProducts(items);
+
+    let arrayPages = [];
+
+    for (let index = 1; index <= totalPages; index++) {
+      arrayPages.push(index);
+    }
+
+    setDetails({
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+      pagination: arrayPages,
+    });
+    setLoading(false);
+    setLoadingData(false);
+  };
+
+  const getProductsFromApi = async (
+    pageNum: number = 1,
+    filter: string = '',
+    search: string = ''
+  ) => {
+    setFilter(filter);
+    setSearch(search);
+    setLimit(12);
+    setLoading(true);
+    setLoadingData(true);
+
+    const {
+      items,
+      page,
+      totalPages,
+      itemsPerPage,
+      totalItems,
+    } = await getProducts(pageNum, 12, filter, search);
     
     setProducts(items);
 
@@ -112,10 +145,10 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLimit(limit + 12);
     let data;
 
-    if (filter) {
-      data = await loadMoreProductsByFilter((limit + 12), filter);
+    if (filter || search) {
+      data = await getProducts(1, (limit + 12), filter, search);
     } else {
-      data = await loadMoreProducts(limit + 12);
+      data = await getProducts(1, (limit + 12));
     }
     setProducts(data.items);
     setLoading(false);
@@ -126,45 +159,17 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLimit(12);
     let data;
 
-    if (filter) {
-      data = await loadByFilterForPage(filter, pageNum);
+    if (filter || search) {
+      data = await getProducts(pageNum, 12, filter, search);
     } else {
-      data = await loadMoreProductsForPage(pageNum);
+      data = await getProducts(pageNum, 12);
     }
+
     const { items, page } = data;
     setProducts(items);
     setDetails({ ...details, page });
     setLoading(false);
   };
-
-  const getByFilter = async (filter: string) => {
-    setLoadingData(true);
-    setFilter(filter);
-    setLimit(12);
-    const {
-      items,
-      page,
-      totalPages,
-      itemsPerPage,
-      totalItems,
-    } = await loadProductsByFilter(filter);
-    setProducts(items);
-
-    let arrayPages = [];
-
-    for (let index = 1; index <= totalPages; index++) {
-      arrayPages.push(index);
-    }
-
-    setDetails({
-      page,
-      totalPages,
-      itemsPerPage,
-      totalItems,
-      pagination: arrayPages,
-    });
-    setLoadingData(false);
-  }
 
   useEffect(() => {
     getInitInfo();
@@ -195,11 +200,12 @@ export const AppProvider = ({ children }: propsProvider) => {
       details,
       productFocus,
       cartCount,
+      search,
       defineFocusProduct,
       saveInCart,
       loadMore,
       loadMoreForPage,
-      getByFilter,
+      getProductsFromApi,
       loading,
       loadingData,
       viewCart,

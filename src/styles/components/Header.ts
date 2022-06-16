@@ -1,3 +1,4 @@
+import { Props } from 'contexts/types';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
@@ -130,6 +131,64 @@ const BtnMenu = styled.button`
   }
 `;
 
+const SearchContainer = styled.div<Props>`
+  background-color: whitesmoke;
+  transition: 0.5s;
+  height: ${Props => Props.viewContainer ? '80px' : '0'};
+  overflow: hidden;
+`;
+
+const SearchContent = styled.form`
+  display: flex;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 20px;
+
+  input {
+    box-sizing: border-box;
+    border: none;
+    border-radius: 2px 0 0 2px;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #333;
+    width: 80%;
+
+    &:focus {
+      outline: none;
+    }
+
+    @media(max-width: 1024px) {
+      width: 100%;
+    }
+  }
+
+  label {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    width: 15%;
+    color: #666;
+
+    @media(max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  button {
+    background-color: white;
+    border: none;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    width: 5%;
+
+    @media(max-width: 1024px) {
+      width: 50px;
+    }
+  }
+`;
+
 const MenuContainer = styled.div`
   background-color: #0000005d;
   width: 100%;
@@ -197,6 +256,8 @@ export {
   Navbar,
   BtnsHeader,
   BtnMenu,
+  SearchContainer,
+  SearchContent,
   MenuContainer,
   Menu,
 };

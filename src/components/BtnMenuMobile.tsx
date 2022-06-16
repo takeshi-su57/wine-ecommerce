@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { BtnMenu, Menu, MenuContainer } from 'styles/components/Header';
 
@@ -37,7 +38,7 @@ const MenuMobileBtn = () => {
           <nav>
             <ul>
               <li><a href="#">Clube</a></li>
-              <li><a href="#">Loja</a></li>
+              <li><Link href={'/'}>Loja</Link></li>
               <li><a href="#">Produtores</a></li>
               <li><a href="#">Ofertas</a></li>
               <li><a href="#">Eventos</a></li>
