@@ -17,6 +17,7 @@ const SectionCenter = styled.section`
 const SectionProducts = styled.section`
   float: right;
   width: 75%;
+  padding-top: 20px;
 
   @media(max-width: 1150px) {
     float: none;
@@ -81,6 +82,7 @@ const SectionError = styled.section`
   text-align: center;
   color: #b3b3b3;
   font-size: 30px;
+  padding-top: 20px;
 `;
 
 export {
