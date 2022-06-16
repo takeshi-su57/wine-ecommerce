@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import MenuMobileBtn from 'components/BtnMenuMobile';
 import Router from 'next/router';
-import { useContext, useState } from 'react';
+import { useContext, useState, MouseEvent } from 'react';
 import { AppContext } from 'contexts/AppProvider';
 import {
   HeaderContainer,
@@ -12,10 +12,18 @@ import {
   SearchContainer,
   SearchContent,
 } from 'styles/components/Header';
+import Link from 'next/link';
 
 const Header = () => {
-  const { cartCount, setViewCart } = useContext(AppContext);
+  const { cartCount, setViewCart, getProductsFromApi } = useContext(AppContext);
   const [viewSearch, setViewSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const submitSearch = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    getProductsFromApi(1, '', searchQuery);
+  };
 
   return (
     <HeaderContainer>
@@ -35,7 +43,7 @@ const Header = () => {
         <Navbar>
           <ul>
             <li><a href="#">Clube</a></li>
-            <li><a href="#">Loja</a></li>
+            <li><Link href={'/'}>Loja</Link></li>
             <li><a href="#">Produtores</a></li>
             <li><a href="#">Ofertas</a></li>
             <li><a href="#">Eventos</a></li>
@@ -77,11 +85,18 @@ const Header = () => {
 
       <SearchContainer viewContainer={ viewSearch }>
         <SearchContent>
-          <input type="text" name="" id="search" placeholder="Pesquisar" />
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Pesquisar"
+            onChange={ (e) => setSearchQuery(e.target.value) }
+            autoComplete="off"
+          />
           <label htmlFor="search">
             aperte enter para buscar
           </label>
-          <button onClick={ () => Router.push('/search') }>
+          <button onClick={ submitSearch }>
             <Image
               src="/icons/search.svg"
               alt="Search icon"

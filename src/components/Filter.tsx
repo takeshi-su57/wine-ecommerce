@@ -5,19 +5,19 @@ import { useContext, useState } from 'react';
 import { FilterForm, SectionFilter } from 'styles/components/Filter';
 
 const Filter = () => {
-  const { getProductsFromApi, getInitInfo } = useContext(AppContext);
+  const { getProductsFromApi, search } = useContext(AppContext);
   const [allProducts, setNoFilter] = useState(true);
   const [viewFilter, setView] = useState(false);
   const inMobile = useMediaQuery('(max-width: 600px)');
 
   const getFilter = async (filter: string) => {
     setNoFilter(false);
-    getProductsFromApi(1, filter, '');
+    getProductsFromApi(1, filter, search);
   };
 
   const getNoFilter = async () => {
     setNoFilter(true);
-    getProductsFromApi();
+    getProductsFromApi(1, '', search);
   };
 
   const viewFilterToggle = () => {

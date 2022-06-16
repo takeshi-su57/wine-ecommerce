@@ -138,7 +138,7 @@ const SearchContainer = styled.div<Props>`
   overflow: hidden;
 `;
 
-const SearchContent = styled.div`
+const SearchContent = styled.form`
   display: flex;
   margin: 0 auto;
   max-width: 1280px;

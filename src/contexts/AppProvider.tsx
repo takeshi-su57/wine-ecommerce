@@ -24,6 +24,7 @@ export const AppProvider = ({ children }: propsProvider) => {
 
   const getInitInfo = async () => {
     setFilter('');
+    setSearch('');
     setLoading(true);
     setLoadingData(true);
 
@@ -60,6 +61,7 @@ export const AppProvider = ({ children }: propsProvider) => {
     search: string = ''
   ) => {
     setFilter(filter);
+    setSearch(search);
     setLimit(12);
     setLoading(true);
     setLoadingData(true);
@@ -71,6 +73,16 @@ export const AppProvider = ({ children }: propsProvider) => {
       itemsPerPage,
       totalItems,
     } = await getProducts(pageNum, 12, filter, search);
+
+    console.log(
+      {
+        items,
+        page,
+        totalPages,
+        itemsPerPage,
+        totalItems,
+      }
+    );
     
     setProducts(items);
 
@@ -143,8 +155,8 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLimit(limit + 12);
     let data;
 
-    if (filter) {
-      data = await getProducts(1, (limit + 12), filter);
+    if (filter || search) {
+      data = await getProducts(1, (limit + 12), filter, search);
     } else {
       data = await getProducts(1, (limit + 12));
     }
@@ -157,8 +169,8 @@ export const AppProvider = ({ children }: propsProvider) => {
     setLimit(12);
     let data;
 
-    if (filter) {
-      data = await getProducts(pageNum, 12, filter);
+    if (filter || search) {
+      data = await getProducts(pageNum, 12, filter, search);
     } else {
       data = await getProducts(pageNum, 12);
     }
@@ -198,6 +210,7 @@ export const AppProvider = ({ children }: propsProvider) => {
       details,
       productFocus,
       cartCount,
+      search,
       defineFocusProduct,
       saveInCart,
       loadMore,
