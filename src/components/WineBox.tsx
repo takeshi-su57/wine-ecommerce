@@ -2,7 +2,6 @@ import { AppContext } from 'contexts/AppProvider';
 import { ProductCart } from 'contexts/types';
 import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
-import { ArrowBack, Delete } from './icons';
 import {
   CardProduct,
   BackContainer,
@@ -61,8 +60,15 @@ const Cart = () => {
               onClick={ () => setViewCart(false) }
               data-cy="winebox-btn-back"
             >
-              <ArrowBack />
-              <span>WineBox ({ cart.length })</span>
+              <Image
+                src="/icons/arrow_back.svg"
+                alt="Arrow back icon"
+                width={30}
+                height={30}
+              />
+              <span>
+                WineBox ({ cart.length })
+              </span>
             </span>
           </Header>
 
@@ -86,8 +92,15 @@ const Cart = () => {
             onClick={ () => setViewCart(false) }
             data-cy="winebox-btn-back"
           >
-            <ArrowBack />
-            <span>WineBox ({ cart.length })</span>
+            <Image
+              src="/icons/arrow_back.svg"
+              alt="Arrow back icon"
+              width={30}
+              height={30}
+            />
+            <span>
+              WineBox ({ cart.length })
+            </span>
           </span>
         </Header>
 
@@ -135,7 +148,12 @@ const Cart = () => {
                     } }
                     data-cy={`winebox-card-product-btn-delete-${i}`}
                   >
-                    <Delete />
+                    <Image
+                      src="/icons/delete.svg"
+                      alt="Arrow back icon"
+                      width={15}
+                      height={15}
+                    />
                   </button>
                 </div>
               </CardProduct>

@@ -19,7 +19,7 @@
       "rating": 4,
       "country": "Chile",
       "region": "Valle Central",
-      "flag": "/images/flag-test.svg",
+      "flag": "/icons/flag-test.svg",
       "sommelierComment": "Jovem e com um estilo que agrada com facilidade, esse versátil rótulo pode ser degustado sozinho ou harmonizado com receitas do dia a dia. A Viña Canepa, fundada no Chile por imigrantes italianos, iniciou a produção da linha Novísimo nos anos 80."
     },
     {
@@ -37,7 +37,7 @@
       "rating": 4,
       "country": "Chile",
       "region": "Valle Central",
-      "flag": "/images/flag-test.svg",
+      "flag": "/icons/flag-test.svg",
       "sommelierComment": "Jovem e com um estilo que agrada com facilidade, esse versátil rótulo pode ser degustado sozinho ou harmonizado com receitas do dia a dia. A Viña Canepa, fundada no Chile por imigrantes italianos, iniciou a produção da linha Novísimo nos anos 80."
     }
   ]

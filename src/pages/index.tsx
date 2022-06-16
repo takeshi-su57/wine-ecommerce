@@ -8,11 +8,6 @@ import Loading from 'components/Loading';
 import WineBox from 'components/WineBox';
 import { useMediaQuery } from 'hooks/useMediaQuery';
 import {
-  LoadMore,
-  ContainerPagesBtns,
-  BtnsPages,
-} from 'styles/components/LoadMoreBtn';
-import {
   Main,
   ProductsFlex,
   SectionCenter,
@@ -20,15 +15,15 @@ import {
   SectionLoading,
   SectionProducts,
 } from 'styles/Containers';
+import LoadMoreMobile from 'components/LoadMoreMobile';
+import PagesList from 'components/PagesList';
 
 const Home: NextPage = () => {
   const {
     details,
     products,
-    loadMore,
     loading,
     viewCart,
-    loadMoreForPage,
     loadingData,
   } = useContext(AppContext);
   const inMobile = useMediaQuery('(max-width: 600px)');
@@ -76,63 +71,21 @@ const Home: NextPage = () => {
             {
               products.map((product, index) => (
                 <CardProduct
-                  key={index}
-                  name={product.name}
-                  id={product.id}
+                  key={ index}
+                  name={ product.name }
+                  id={ product.id }
                   index={ index }
-                  image={product.image}
-                  discount={product.discount}
-                  price={product.price}
-                  priceMember={product.priceMember}
-                  priceNonMember={product.priceNonMember}
+                  image={ product.image }
+                  discount={ product.discount }
+                  price={ product.price }
+                  priceMember={ product.priceMember }
+                  priceNonMember={ product.priceNonMember }
                 />
               ))
             }
           </ProductsFlex>
 
-          {
-            inMobile ? (
-              <div>
-                <LoadMore
-                  onClick={ () => loadMore() }
-                  disabled={ products.length === details.totalItems }
-                >
-                  { loading ? <Loading /> : <h3>Mostrar mais</h3> }
-                </LoadMore>
-              </div>
-            ) : (
-              <ContainerPagesBtns>
-                <button
-                  onClick={ () => loadMoreForPage(details.page - 1) }
-                  disabled={ details.page === 1 }
-                  data-cy="home_page_navigate_btn-previous"
-                >
-                  &lt;&lt; Anterior
-                </button>
-
-                {
-                  details.pagination.map((page, index) => (
-                    <BtnsPages
-                      key={ index }
-                      onClick={ () => loadMoreForPage(page) }
-                      actualPage={ page === details.page ? true : false }
-                      data-cy={`home_page_navigate_btn-${index}`}
-                    >
-                      { page }
-                    </BtnsPages>
-                  ))
-                }
-                
-                <button
-                  onClick={ () => loadMoreForPage(details.page + 1) }
-                  disabled={ (details.page + 1) > details.totalPages }
-                  data-cy="home_page_navigate_btn-next"
-                >
-                  Próximo &gt;&gt;
-                </button>
-              </ContainerPagesBtns>
-            )
-          }
+          { inMobile ? <LoadMoreMobile /> : <PagesList /> }
         </SectionProducts>
       </SectionCenter>
 

@@ -42,7 +42,7 @@ const Header = () => {
         <BtnsHeader>
           <button>
             <Image
-              src="/images/search_icon.svg"
+              src="/icons/search_icon.svg"
               alt="Search Icon"
               width={ 50 }
               height={ 50 }
@@ -50,7 +50,7 @@ const Header = () => {
           </button>
           <button>
             <Image
-              src="/images/user_icon.svg"
+              src="/icons/user_icon.svg"
               alt="User Icon"
               width={ 50 }
               height={ 50 }
