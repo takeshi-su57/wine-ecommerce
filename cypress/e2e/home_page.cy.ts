@@ -298,7 +298,7 @@ describe('Browsing the store', () => {
         .contains('Produto 9');
     });
 
-    it('Select the "Todos os preços" filter', () => {
+    /* it('Select the "Todos os preços" filter', () => {
       cy.intercept({
         method: 'GET',
         url: '/products*',
@@ -325,7 +325,7 @@ describe('Browsing the store', () => {
 
       cy.get('[data-cy="home_page_card_product-2"]')
         .contains('Produto 3');
-    });
+    }); */
   });
 });
 
