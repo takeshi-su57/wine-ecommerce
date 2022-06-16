@@ -18,7 +18,6 @@ import {
   ProductName,
   ProductPrice
 } from 'styles/components/DetailProduct';
-import { ArrowBack } from './icons';
 import Router from 'next/router';
 import { ProductWineBox } from 'contexts/types';
 
@@ -56,7 +55,12 @@ const DetailProduct = () => {
           onClick={ () => Router.push('/') }
           data-cy="details_products_page_btn_back"
         >
-          <ArrowBack />
+          <Image
+            src="/icons/arrow_back.svg"
+            alt="Arrow back icon"
+            width={30}
+            height={30}
+          />
           Voltar
         </BtnGoBack>
         <ErrorLoadProduct>
@@ -137,7 +141,12 @@ const DetailProduct = () => {
         onClick={ () => Router.push('/') }
         data-cy="details_products_page_btn_back"
       >
-        <ArrowBack />
+        <Image
+          src="/icons/arrow_back.svg"
+          alt="Arrow back icon"
+          width={30}
+          height={30}
+        />
         Voltar
       </BtnGoBack>
       <SectionFlexProduct>

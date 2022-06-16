@@ -237,6 +237,7 @@ const ContainerPainelFloat = styled.div<Props>`
 const ErrorLoadProduct = styled.h1`
   color: #b3b3b3;
   margin-top: 40px;
+  margin-left: 10px;
   font-size: 30px;
 `;
 
