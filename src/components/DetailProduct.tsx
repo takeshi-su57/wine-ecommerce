@@ -61,10 +61,10 @@ const DetailProduct = () => {
             width={30}
             height={30}
           />
-          Voltar
+          Go back
         </BtnGoBack>
         <ErrorLoadProduct>
-          Erro ao carregar o produto!
+          Error loading the product!
         </ErrorLoadProduct>
       </>
     );
@@ -72,13 +72,13 @@ const DetailProduct = () => {
   
   const { name, image, id, priceMember, priceNonMember  } = productFocus;
 
-  /* Versão para dispositivos com no máximo 900px de largura */
+  /* Version for devices with a maximum width of 900px */
   if (inMobile) {
     return (
       <SectionFlexProduct>
         <InfoContainer>
           <LinksNavigate>
-            <a href="#">Vinhos</a> &gt; <a href="#">{ productFocus.country }</a> &gt; { productFocus.region }
+            <a href="#">Wines</a> &gt; <a href="#">{ productFocus.country }</a> &gt; { productFocus.region }
           </LinksNavigate>
           <ProductName>
             { productFocus.name }
@@ -106,7 +106,7 @@ const DetailProduct = () => {
         </ImageContainer>
 
         <Description>
-          <h4>Descrição</h4>
+          <h4>Description</h4>
 
           <ProductComment>
             { productFocus.sommelierComment }
@@ -121,7 +121,7 @@ const DetailProduct = () => {
               productFocus.priceMember.toFixed(2).replace(/\./, ',')  
             }</span></span>
             <span>
-              { `PREÇO NÃO-SÓCIO R$ ${productFocus.priceNonMember
+              { `NON-MEMBER PRICE R$ ${productFocus.priceNonMember
                   .toFixed(2).replace(/\./, ',')}` }
             </span>
           </div>
@@ -136,7 +136,7 @@ const DetailProduct = () => {
     );
   };
   
-  /* Versão para dispositivos com no mínimo 900px de largura */
+  /* Version for devices at least 900px wide */
   return (
     <>
       <BtnGoBack
@@ -149,7 +149,7 @@ const DetailProduct = () => {
           width={30}
           height={30}
         />
-        Voltar
+        Go back
       </BtnGoBack>
       <SectionFlexProduct>
         <ImageContainer>
@@ -185,11 +185,11 @@ const DetailProduct = () => {
               .toFixed(2).replace(/\./, ',') }` }
           </ProductPrice>
           <h3>
-            { `NÃO SÓCIO R$ ${ productFocus.priceNonMember
+            { `NO MEMBER R$ ${ productFocus.priceNonMember
                 .toFixed(2).replace(/\./, ',') }/un.` }
           </h3>
 
-          <h4>Comentário do Sommelier</h4>
+          <h4>Commentary of the Sommelier</h4>
 
           <ProductComment>
             { productFocus.sommelierComment }

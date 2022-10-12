@@ -69,10 +69,10 @@ const CardProduct = (product: ProductCard) => {
           <span>{ discount }% OFF</span>
         </ProductDiscount>
         <ProductPriceSocial>
-          Sócio wine <span>R$ <span>{ priceMember.toFixed(2).replace(/\./, ',') }</span></span>
+          Wine partner <span>R$ <span>{ priceMember.toFixed(2).replace(/\./, ',') }</span></span>
         </ProductPriceSocial>
         <ProductPriceNoSocial>
-          Não sócio R$ { priceNonMember.toFixed(2).replace(/\./, ',') }
+          I am not a R$ member { priceNonMember.toFixed(2).replace(/\./, ',') }
         </ProductPriceNoSocial>
       </Card>
       <BtnAddProductCart

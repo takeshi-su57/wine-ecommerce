@@ -74,7 +74,7 @@ const Cart = () => {
 
           <NoProducts data-cy="winebox-body">
             <span>
-              Você ainda não escolheu seus produtos
+              You haven&apos;t chosen your products yet
             </span>
           </NoProducts>
         </Container>

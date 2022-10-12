@@ -40,7 +40,7 @@ const Filter = () => {
         />
       </h3>
 
-      <h4>Por preço</h4>
+      <h4>For price</h4>
 
       <FilterForm>
         <label htmlFor="price-option-default" data-cy="filter-radio-default">
@@ -52,7 +52,7 @@ const Filter = () => {
             checked={ allProducts }
           />
           <span></span>
-          Todos os preços
+          All prices
         </label>
 
         <label htmlFor="price-option-one" data-cy="filter-radio-1">
@@ -63,7 +63,7 @@ const Filter = () => {
             onChange={ () => getFilter('0-40')}
           />
           <span></span>
-          Até R$40
+          Up to R$40
         </label>
 
         <label htmlFor="price-option-two" data-cy="filter-radio-2">
@@ -74,7 +74,7 @@ const Filter = () => {
             onChange={ () => getFilter('40-60') }
           />
           <span></span>
-          R$40 A R$60
+          R$40 to R$60
         </label>
 
         <label htmlFor="price-option-three" data-cy="filter-radio-3">
@@ -85,7 +85,7 @@ const Filter = () => {
             onChange={ () => getFilter('100-200') }
           />
           <span></span>
-          R$100 A R$200
+          R$100 to R$200
         </label>
 
         <label htmlFor="price-option-four" data-cy="filter-radio-4">
@@ -96,7 +96,7 @@ const Filter = () => {
             onChange={ () => getFilter('200-500') }
           />
           <span></span>
-          R$200 A R$500
+          R$200 to R$500
         </label>
 
         <label htmlFor="price-option-five" data-cy="filter-radio-5">
@@ -107,7 +107,7 @@ const Filter = () => {
             onChange={ () => getFilter('500-') }
           />
           <span></span>
-          Acima de R$500
+          Above R$500
         </label>
       </FilterForm>
     </SectionFilter>

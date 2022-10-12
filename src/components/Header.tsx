@@ -42,11 +42,11 @@ const Header = () => {
 
         <Navbar>
           <ul>
-            <li><a href="#">Clube</a></li>
-            <li><Link href={'/'}>Loja</Link></li>
-            <li><a href="#">Produtores</a></li>
-            <li><a href="#">Ofertas</a></li>
-            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Club</a></li>
+            <li><Link href={'/'}>Shop</Link></li>
+            <li><a href="#">Producers</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">Events</a></li>
           </ul>
         </Navbar>
 
@@ -94,7 +94,7 @@ const Header = () => {
             autoComplete="off"
           />
           <label htmlFor="search">
-            aperte enter para buscar
+            press enter to search
           </label>
           <button onClick={ submitSearch }>
             <Image

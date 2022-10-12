@@ -12,7 +12,7 @@ const LoadMoreMobile = () => {
         onClick={() => loadMore()}
         disabled={products.length === details.totalItems}
       >
-        {loading ? <Loading /> : <h3>Mostrar mais</h3>}
+        {loading ? <Loading /> : <h3>Show more</h3>}
       </LoadMore>
     </div>
   );

@@ -33,7 +33,7 @@ const Search: NextPage = () => {
       <Header />
       <SectionCenter>
         <p data-cy="home_page_info_find_products">
-          <strong>{ details.totalItems }</strong> produtos encontrados para &quot;Bacharola&quot;
+          <strong>{ details.totalItems }</strong> products found for &quot;Bacharola&quot;
         </p>
         
       </SectionCenter>

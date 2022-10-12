@@ -45,7 +45,7 @@ const Home: NextPage = () => {
     );
   };
 
-  /* Caso a requisição não retorne nenhum produto */
+  /* If the request does not return any products */
   if (products.length === 0) {
     return (
       <Main>
@@ -53,14 +53,14 @@ const Home: NextPage = () => {
         <SectionCenter>
           <Filter />
           <SectionError>
-            <h1>Nenhum produto foi encontrado!</h1>
+            <h1>No product found!</h1>
           </SectionError>
         </SectionCenter>
       </Main>
     );
   };
 
-  /* Caso a requisição retorne os dados esperados */
+  /* If the request returns the expected data */
   return (
     <Main>
       <Header />

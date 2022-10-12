@@ -12,7 +12,7 @@ const PagesList = () => {
         disabled={ details.page === 1 }
         data-cy="home_page_navigate_btn-previous"
       >
-        &lt;&lt; Anterior
+        &lt;&lt; Previous
       </button>
 
       {
@@ -33,7 +33,7 @@ const PagesList = () => {
         disabled={ (details.page + 1) > details.totalPages }
         data-cy="home_page_navigate_btn-next"
       >
-        Próximo &gt;&gt;
+        Next &gt;&gt;
       </button>
     </ContainerPagesBtns>
   );
