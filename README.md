@@ -4,51 +4,42 @@
 
 Teste técnico oferecido pela ![Wine](https://www.wine.com.br/) com o objetivo de desenvolver um E-commerce de Vinhos 🍷.
 
-- Deploy: https://wine-ecommerce-jet.vercel.app/
-
-## 🧰 Desenvolvido com
+## 🧰 Developed with
   
   - Next.js
   - Styled Components
   - TypeScript
   - Cypress
 
-## 🔧 Instalação do ambiente de desenvolvimento
-
-  - Clone este repositório:
+  - Access the project folder:
   ```
-  git clone git@github.com:adilsongb/wine-ecommerce.git
-  ```
-
-  - Acesse a pasta do projeto:
-  ```
-  cd wine-ecommerce
+  wine-ecommerce cd
   ```
   
-  - Instale as dependências do projeto:
+  - Install project dependencies:
   ```
   npm install
   ```
 
-  - Inicie a aplicação em modo de desenvolvimento:
+  - Start the application in development mode:
   ```
   npm run dev
   ```
   
-  - Comece a desenvolver 🙂
+  - Start developing 🙂
 
-## 🧪 Testes E2E
+## 🧪 E2E Tests
 
-Neste projeto, é aplicado testes End-to-End para simular os diversos comportamentos da aplicação como um todo.
+In this project, End-to-End tests are applied to simulate the different behaviors of the application as a whole.
 
-Os testes são executáveis através do Cypress:
+The tests are executable through Cypress:
 
-  - Executa os testes no terminal:
+  - Run the tests in the terminal:
   ```
   npm test
   ```
   
-  - Executa os testes através do aplicativo do Cypress (Visualização dos testes na aplicação):
+  - Run the tests through the Cypress application (Preview of tests in the application):
   ```
   npm run test:open
   ```
